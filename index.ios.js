@@ -17,7 +17,6 @@ import Nearby from './components/nearby'
 
 const defaultRoute = {
   component: TabbarView,
-  // component: Nearby,
 };
 
 export default class MeGroup extends Component {

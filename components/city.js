@@ -1,5 +1,19 @@
 import React, { Component } from 'react';
-import { AppRegistry, View, Text, StyleSheet, TouchableOpacity, ListView } from "react-native";
+import _ from 'lodash';
+import {
+    AppRegistry,
+    View,
+    Image,
+    TouchableOpacity,
+    Modal,
+    Text,
+    ListView,
+    Platform,
+    Dimensions,
+    StyleSheet,
+    Alert,
+    ActivityIndicator
+} from "react-native";
 import XmlParser from './model/xmlParser';
 
 
@@ -9,6 +23,7 @@ class City extends Component {
         this.state = {
             dataSource: new ListView.DataSource({
                 rowHasChanged: (row1, row2) => row1 !== row2,
+                sectionHeaderHasChanged: (s1, s2) => s1 !== s2,
             }),
             loaded: false,
         };
@@ -40,9 +55,11 @@ class City extends Component {
             .then((response) => response.text())
             .then((responseData) => {
                 var result = new XmlParser().parseXmlText(responseData);
-                console.log('betta' + result.response.divisions.division);
+                var nameList = result.response.divisions.division;
+                nameList.sort((a, b) => (a.id.text.localeCompare(b.id.text)));
+                let groupNameList = _.groupBy(nameList, x => x.id.text[0]);
                 this.setState({
-                    dataSource: this.state.dataSource.cloneWithRows(result.response.divisions.division),
+                    dataSource: this.state.dataSource.cloneWithRowsAndSections(groupNameList),
                     loaded: true,
                 });
             })
@@ -69,9 +86,35 @@ class City extends Component {
                 <ListView
                     dataSource={this.state.dataSource}
                     renderRow={this.renderCell}
+                    renderSectionHeader={this.renderSectionHeader}
                 />
             </View>
         )
+    }
+
+    pySegSort(arr) {
+        if (!String.prototype.localeCompare)
+            return null;
+
+        var letters = "abcdefghjklmnopqrstwxyz".split('');
+
+        var segs = [];
+        var curr;
+        letters.forEach(function (item, i) {
+            curr = { letter: item, data: [] };
+            arr.forEach(function (item2) {
+                if ((!zh[i - 1] || zh[i - 1].localeCompare(item2[1]) <= 0) && item2.localeCompare(zh[i]) == -1) {
+                    curr.data.push(item2);
+                }
+            });
+            if (curr.data.length) {
+                segs.push(curr);
+                curr.data.sort(function (a, b) {
+                    return a.localeCompare(b);
+                });
+            }
+        });
+        return segs;
     }
 
     onBack() {
@@ -81,33 +124,61 @@ class City extends Component {
     renderLoadingView() {
         return (
             <View>
-                <Text>
-                    Loading data...
-            </Text>
+                <ActivityIndicator
+                    animating={!this.state.loaded}
+                    style={[styles.centering, { height: 80 }]}
+                    size="large" />
             </View>
         );
     }
 
-    renderCell(data) {
+    renderCell(rowData, sectionID, rowID, highlighRow) {
         return (
-            <View style={styles.container}>
-                <Text>{data.name.text}</Text>
+            <View style={styles.cellStyle}>
+                <Text >{rowData.name.text}</Text>
             </View>
         );
+    }
+    renderSectionHeader = (sectionData, sectionID) => {
+        return (
+            <View style={styles.sectionStyle}>
+                <Text >{sectionID}</Text>
+            </View>
+        )
     }
 }
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "#FFB6C1"
+        backgroundColor: "#FFE1FF"
     },
+
+    sectionStyle: {
+        height: 30,
+        backgroundColor: '#E5E5E5',
+        justifyContent: 'center',
+        paddingLeft: 5
+    },
+
+    cellStyle: {
+        height: 40,
+        backgroundColor: '#FFFFFF',
+        justifyContent: 'center',
+        paddingLeft: 5
+    },
+
     navButtonStyle: {
         marginLeft: 10
     },
+
+    leftButtonTitleStyle: {
+        color: '#FFFFFF'
+    },
+
     navBarStyle: {
         height: 64,
-        backgroundColor: '#FFBBFF',
+        backgroundColor: '#48D1CC',
         borderBottomWidth: 0.5,
         borderBottomColor: 'gray',
         flexDirection: 'row',

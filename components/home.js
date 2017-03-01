@@ -15,15 +15,15 @@ class Home extends Component {
             <View style={styles.navBarStyle} >
                 {/* 左边按钮 */}
                 <TouchableOpacity style = {styles.navButtonStyle} onPress={this.onCityButtonPressed.bind(this)}>
-                    <Text style={styles.leftButtonTitleStyle}>城市</Text>
+                    <Text style={{color: '#FFFFFF'}}>城市</Text>
                 </TouchableOpacity>
 
                 {/* 中间标题 */}
-                <Text style={styles.navBarTitleStyle}>美团</Text>
+                <Text style={styles.ButtonTitleStyle}>美团</Text>
 
                 {/* 右边按钮 */}
                 <TouchableOpacity style = {styles.navButtonStyle}>
-                    <Text style={styles.rightButtonTitleStyle}>优选</Text>
+                    <Text style={{color: '#FFFFFF'}}>优选</Text>
                 </TouchableOpacity>
             </View>
         )
@@ -39,11 +39,11 @@ class Home extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "#FFE1FF"
+        backgroundColor: '#FFFFFF',
     },
     ButtonTitleStyle: {
         fontSize: 15,
-        color: 'blue',
+        color: '#FFFFFF',
         paddingLeft: 8
     },
     navButtonStyle: {
@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
     },
     navBarStyle: {
         height: 64,
-        backgroundColor: '#FFBBFF',
+        backgroundColor: '#48D1CC',
         borderBottomWidth: 0.5,
         borderBottomColor: 'gray',
         flexDirection: 'row',
