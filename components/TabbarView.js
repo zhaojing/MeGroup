@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, Navigator, StatusBar } from "react-native";
+import { View, Text, StyleSheet, Navigator, StatusBar, Image } from "react-native";
 import TabNavigator from 'react-native-tab-navigator'
 import Home from './home'
 import Mine from './mine'
@@ -23,6 +23,7 @@ class TabbarView extends Component {
                         selected={this.state.selectedTab === '首页'}
                         title="首页"
                         titleStyle={styles.tabText}
+                        renderIcon={() => <Image source={require('../icon/home.png')} />}
                         selectedTitleStyle={styles.selectedTabText}
                         onPress={() => this.setState({ selectedTab: '首页' })}>
                         <Home navigator={this.props.navigator} />
