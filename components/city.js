@@ -92,31 +92,6 @@ class City extends Component {
         )
     }
 
-    pySegSort(arr) {
-        if (!String.prototype.localeCompare)
-            return null;
-
-        var letters = "abcdefghjklmnopqrstwxyz".split('');
-
-        var segs = [];
-        var curr;
-        letters.forEach(function (item, i) {
-            curr = { letter: item, data: [] };
-            arr.forEach(function (item2) {
-                if ((!zh[i - 1] || zh[i - 1].localeCompare(item2[1]) <= 0) && item2.localeCompare(zh[i]) == -1) {
-                    curr.data.push(item2);
-                }
-            });
-            if (curr.data.length) {
-                segs.push(curr);
-                curr.data.sort(function (a, b) {
-                    return a.localeCompare(b);
-                });
-            }
-        });
-        return segs;
-    }
-
     onBack() {
         this.props.navigator.pop()
     }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, Navigator } from "react-native";
+import { View, Text, StyleSheet, Navigator, StatusBar } from "react-native";
 import TabNavigator from 'react-native-tab-navigator'
 import Home from './home'
 import Mine from './mine'
@@ -15,6 +15,9 @@ class TabbarView extends Component {
     render() {
         return (
             <View style={styles.container}>
+                <View>
+                    <StatusBar barStyle="light-content" />
+                </View>
                 <TabNavigator>
                     <TabNavigator.Item
                         selected={this.state.selectedTab === '首页'}
