@@ -20,6 +20,7 @@ class Home extends Component {
                 <View style={styles.spaceStyle}></View>
                 <Text style={{color: '#D6D6D6',textAlign: 'center',paddingTop: 10 }}>－猜你喜欢－</Text>
                 <HomeList/>
+                 <View style={{ height: 18, backgroundColor: '#21C0AD' }}/>
             </View>
         );
     }

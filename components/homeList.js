@@ -20,7 +20,7 @@ class HomeList extends Component {
         super(props);
         this.state = {
             dataSource: new ListView.DataSource({
-                rowHasChanged: (row1, row2) => row1 !== row2,
+                rowHasChanged: (row1, row2) => row1 !== row2
             }),
             loaded: false,
         };
@@ -39,20 +39,20 @@ class HomeList extends Component {
     }
 
     fetchData() {
-        // fetch('http://www.meituan.com/api/v1/divisions')
-        //     .then((response) => response.text())
-        //     .then((responseData) => {
-        //         var result = new XmlParser().parseXmlText(responseData);
-        //         var nameList = result.response.divisions.division;
-        //         this.setState({
-        //             dataSource: this.state.dataSource.cloneWithRowsAndSections(groupNameList),
-        //             loaded: true,
-        //         });
-        //     })
-        //     .catch((error) => {
-        //         console.error(error)
-        //     })
-        //     .done();
+        fetch('http://api.meituan.com/group/v1/recommend/homepage/city/1')
+            .then((response) => response.json())
+            .then((responseData) => {
+                var nameList = responseData.data;
+                console.log(nameList);
+                this.setState({
+                    dataSource: this.state.dataSource.cloneWithRows(nameList),
+                    loaded: true,
+                });
+            })
+            .catch((error) => {
+                console.error(error)
+            })
+            .done();
     }
     setListView() {
         return (
@@ -67,7 +67,7 @@ class HomeList extends Component {
     renderCell(rowData, sectionID, rowID, highlighRow) {
         return (
             <View style={styles.cellStyle}>
-                <Text >{rowData.name.text}</Text>
+                <Text >{rowData.brandname}</Text>
             </View>
         );
     }
@@ -78,16 +78,8 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: "#FFE1FF"
     },
-
-    sectionStyle: {
-        height: 30,
-        backgroundColor: '#E5E5E5',
-        justifyContent: 'center',
-        paddingLeft: 5
-    },
-
     cellStyle: {
-        height: 40,
+        height: 100,
         backgroundColor: '#FFFFFF',
         justifyContent: 'center',
         paddingLeft: 5
@@ -100,7 +92,6 @@ const styles = StyleSheet.create({
     leftButtonTitleStyle: {
         color: '#FFFFFF'
     },
-
     navBarStyle: {
         height: 64,
         backgroundColor: '#48D1CC',
