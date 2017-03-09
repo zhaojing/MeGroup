@@ -39,13 +39,14 @@ class HomeList extends Component {
     }
 
     fetchData() {
-        fetch('http://api.meituan.com/group/v1/recommend/homepage/city/1')
-            .then((response) => response.json())
+        fetch('http://api.union.meituan.com/data/api?city=%E8%A5%BF%E5%AE%89&category=%E7%BE%8E%E9%A3%9F&limit=40')
+            .then((response) => response.text())
             .then((responseData) => {
-                var nameList = responseData.data;
-                console.log(nameList);
+                var result = new XmlParser().parseXmlText(responseData);
+                var likeData = result.response.deals.data;
+                console.log('betta   ' + JSON.stringify(likeData))
                 this.setState({
-                    dataSource: this.state.dataSource.cloneWithRows(nameList),
+                    dataSource: this.state.dataSource.cloneWithRows(likeData),
                     loaded: true,
                 });
             })
@@ -65,9 +66,13 @@ class HomeList extends Component {
         )
     }
     renderCell(rowData, sectionID, rowID, highlighRow) {
+        console.log('betta' + rowData.deal.deal_img);
         return (
             <View style={styles.cellStyle}>
-                <Text >{rowData.brandname}</Text>
+                <Image source={{ uri: rowData.deal.deal_img.text }} style={{ marginLeft: 10, width: 80, height: 80, backgroundColor: '#FFE1FF' }} />
+                <View style={{ marginLeft:10 ,marginRight: 100, backgroundColor:'#FF83FA' }}>
+                    <Text style={{ marginTop: 10 }} >炝锅鱼套餐，建议2-3人使用，提供免费WiFi,炝锅鱼套餐，建议2-3人使用，提供免费WiFi</Text>
+                </View>
             </View>
         );
     }
@@ -76,19 +81,22 @@ class HomeList extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "#FFE1FF"
+        backgroundColor: "#FFFFFF"
     },
     cellStyle: {
-        height: 100,
+        height: 90,
         backgroundColor: '#FFFFFF',
-        justifyContent: 'center',
-        paddingLeft: 5
+        flex: 1,
+        flexDirection: 'row'
     },
+    cellLeftImageStyle: {
 
+    },
+    cellRightImageStyle: {
+    },
     navButtonStyle: {
         marginLeft: 10
     },
-
     leftButtonTitleStyle: {
         color: '#FFFFFF'
     },
