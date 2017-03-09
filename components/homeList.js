@@ -70,7 +70,7 @@ class HomeList extends Component {
         return (
             <View style={styles.cellStyle}>
                 <Image source={{ uri: rowData.deal.deal_img.text }} style={{ marginLeft: 10, width: 80, height: 80, backgroundColor: '#FFE1FF' }} />
-                <View style={{ marginLeft:10 ,marginRight: 100, backgroundColor:'#FF83FA' }}>
+                <View style={{ marginLeft:10 ,marginRight: 100 }}>
                     <Text style={{ marginTop: 10 }} >炝锅鱼套餐，建议2-3人使用，提供免费WiFi,炝锅鱼套餐，建议2-3人使用，提供免费WiFi</Text>
                 </View>
             </View>
