@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { AppRegistry, View, Text, StyleSheet, StatusBar, TouchableOpacity } from "react-native";
+import { AppRegistry, View, Text, StyleSheet, StatusBar, TouchableOpacity, ScrollView } from "react-native";
 import City from './city'
 import HomeType from './homeType'
 import Like from './like'
@@ -9,19 +9,18 @@ import Navigation from './navigationView'
 class Home extends Component {
     render() {
         return (
-            <View style = {styles.container}>
-                <View style={{ height: 18, backgroundColor: '#21C0AD' }}/>
-                <Navigation style={{ paddingTop: 20 }}/>
+            <ScrollView style={styles.container}>
+                <View style={{ height: 18, backgroundColor: '#21C0AD' }} />
+                <Navigation style={{ paddingTop: 20 }} />
                 <View style={{ height: 160 }}>
                     <HomeType selectedButton={(typeId) => this.selectedTypeButton(typeId)} />
                 </View>
                 <View style={styles.spaceStyle}></View>
-                <Like/>
+                <Like />
                 <View style={styles.spaceStyle}></View>
-                <Text style={{color: '#D6D6D6',textAlign: 'center',paddingTop: 10 }}>－猜你喜欢－</Text>
-                <HomeList/>
-                 <View style={{ height: 18, backgroundColor: '#21C0AD' }}/>
-            </View>
+                <Text style={{ color: '#D6D6D6', textAlign: 'center', paddingTop: 10 }}>－猜你喜欢－</Text>
+                <HomeList />
+            </ScrollView>
         );
     }
 
