@@ -5,6 +5,7 @@ import HomeType from './homeType'
 import Like from './like'
 import HomeList from './homeList'
 import Navigation from './navigationView'
+import Default from './default'
 
 class Home extends Component {
     render() {
@@ -12,7 +13,7 @@ class Home extends Component {
             <ScrollView style={styles.container}>
                 <View style={{ height: 18, backgroundColor: '#21C0AD' }} />
                 <Navigation style={{ paddingTop: 20 }} />
-                <View style={{ height: 160 }}>
+                <View style={{ height: 200 }}>
                     <HomeType selectedButton={(typeId) => this.selectedTypeButton(typeId)} />
                 </View>
                 <View style={styles.spaceStyle}></View>
@@ -25,7 +26,9 @@ class Home extends Component {
     }
 
     selectedTypeButton(inputTypeId) {
-
+        this.props.navigator.push({
+            component: Default,
+        })
     }
 
     setupNavBar() {

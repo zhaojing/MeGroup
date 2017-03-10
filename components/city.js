@@ -15,6 +15,7 @@ import {
     ActivityIndicator
 } from "react-native";
 import XmlParser from './model/xmlParser';
+import NavBarStyle from './Views/navBarStyle';
 
 
 class City extends Component {
@@ -33,7 +34,7 @@ class City extends Component {
         if (!this.state.loaded) {
             return (
                 <View>
-                    {this.setNavigationBar()}
+                    <NavBarStyle selectBack = {()=> this.onBack()}/>
                     {this.renderLoadingView()}
                 </View>
             )
@@ -67,17 +68,6 @@ class City extends Component {
                 console.error(error)
             })
             .done();
-    }
-
-    setNavigationBar() {
-        return (
-            <View style={styles.navBarStyle} >
-                {/* 左边按钮 */}
-                <TouchableOpacity style={styles.navButtonStyle} onPress={this.onBack.bind(this)}>
-                    <Text style={styles.leftButtonTitleStyle}>返回</Text>
-                </TouchableOpacity>
-            </View>
-        );
     }
 
     setListView() {
