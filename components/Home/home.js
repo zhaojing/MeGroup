@@ -12,7 +12,7 @@ class Home extends Component {
         return (
             <ScrollView style={styles.container}>
                 <View style={{ height: 18, backgroundColor: '#21C0AD' }} />
-                <Navigation style={{ paddingTop: 20 }} />
+                <Navigation navigator={this.props.navigator} style={{ paddingTop: 20 }} />
                 <View style={{ height: 200 }}>
                     <HomeType selectedButton={(typeId) => this.selectedTypeButton(typeId)} />
                 </View>

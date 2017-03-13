@@ -1,17 +1,19 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import {
     View,
     Text,
     Platform,
     Image,
     TextInput,
+    TouchableOpacity,
     StyleSheet
 } from 'react-native';
+import Nearby from './NearBy/nearby'
 
 class Navigation extends Component {
     render() {
         return (
-            <View style={[styles.navigation]}>
+            <TouchableOpacity style={[styles.navigation]} onPress={()=>this._search('Bottom')}>
                 <View style={[styles.headerNav]}>
                     <Text style={[styles.whiteText]}>西安</Text>
                     <Image source={require('../icon/angle-arrow-down.png')} style={[styles.arrowDown]} />
@@ -26,9 +28,15 @@ class Navigation extends Component {
                     <Image source={require('../icon/qr-code.png')} style={[styles.qrCodeAndNotification]} />
                     <Image source={require('../icon/notification.png')} style={[styles.qrCodeAndNotification]} />
                 </View>
-            </View>
+            </TouchableOpacity>
         );
     }
+    _search(type) {
+    this.props.navigator.push({
+      component: Nearby,
+      type: type
+    })
+  }
 }
 
 export default Navigation;

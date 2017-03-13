@@ -19,18 +19,27 @@ const defaultRoute = {
 };
 
 export default class MeGroup extends Component {
-  _renderScene(route, navigator) {
-    let Component = route.component;
-    return (
-      <Component {...route.params} navigator={navigator} />
-    );
-  }
   render() {
     return (
       <Navigator
         initialRoute={defaultRoute}
         renderScene={this._renderScene}
+        configureScene={this._configureScene}
       />
+    );
+  }
+
+  _configureScene(route, routeStack) {
+    if (route.type == 'Bottom') {
+      return Navigator.SceneConfigs.FloatFromBottom; // 底部弹出
+    }
+    return Navigator.SceneConfigs.PushFromRight; // 右侧弹出
+  }
+
+  _renderScene(route, navigator) {
+    let Component = route.component;
+    return (
+      <Component {...route.params} navigator={navigator} />
     );
   }
 }
