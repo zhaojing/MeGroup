@@ -74280,13 +74280,17 @@ var _reactNative=require(42            ); // 42 = react-native
 
 
 
+
 var _xmlParser=require(415                    );var _xmlParser2=babelHelpers.interopRequireDefault(_xmlParser); // 415 = ../../Model/xmlParser
-var _navBarStyle=require(419                      );var _navBarStyle2=babelHelpers.interopRequireDefault(_navBarStyle);var // 419 = ../../Views/navBarStyle
+var _navBarStyle=require(419                      );var _navBarStyle2=babelHelpers.interopRequireDefault(_navBarStyle); // 419 = ../../Views/navBarStyle
+var _home=require(412      );var _home2=babelHelpers.interopRequireDefault(_home);var // 412 = ../home
 
 
 City=function(_Component){babelHelpers.inherits(City,_Component);
 function City(props){babelHelpers.classCallCheck(this,City);var _this=babelHelpers.possibleConstructorReturn(this,(City.__proto__||Object.getPrototypeOf(City)).call(this,
 props));_this.
+
+
 
 
 
@@ -74376,14 +74380,12 @@ _react2.default.createElement(_reactNative.View,{style:styles.sectionStyle},
 _react2.default.createElement(_reactNative.Text,null,sectionID)));
 
 
-};_this.state={dataSource:new _reactNative.ListView.DataSource({rowHasChanged:function rowHasChanged(row1,row2){return row1!==row2;},sectionHeaderHasChanged:function sectionHeaderHasChanged(s1,s2){return s1!==s2;}}),loaded:false};return _this;}babelHelpers.createClass(City,[{key:'render',value:function render(){var _this2=this;if(!this.state.loaded){return _react2.default.createElement(_reactNative.View,null,_react2.default.createElement(_navBarStyle2.default,{selectBack:function selectBack(){return _this2.onBack();}}),this.renderLoadingView());}return _react2.default.createElement(_reactNative.View,null,this.setNavigationBar(),this.setListView());}},{key:'componentDidMount',value:function componentDidMount(){this.fetchData();}},{key:'fetchData',value:function fetchData(){var _this3=this;fetch('http://www.meituan.com/api/v1/divisions').then(function(response){return response.text();}).then(function(responseData){var result=new _xmlParser2.default().parseXmlText(responseData);var nameList=result.response.divisions.division;nameList.sort(function(a,b){return a.id.text.localeCompare(b.id.text);});var groupNameList=_lodash2.default.groupBy(nameList,function(x){return x.id.text[0];});_this3.setState({dataSource:_this3.state.dataSource.cloneWithRowsAndSections(groupNameList),loaded:true});}).catch(function(error){console.error(error);}).done();}},{key:'setListView',value:function setListView(){return _react2.default.createElement(_reactNative.View,null,_react2.default.createElement(_reactNative.ListView,{dataSource:this.state.dataSource,renderRow:this.renderCell,renderSectionHeader:this.renderSectionHeader}));}},{key:'onBack',value:function onBack(){this.props.navigator.pop();}},{key:'renderLoadingView',value:function renderLoadingView(){return _react2.default.createElement(_reactNative.View,null,_react2.default.createElement(_reactNative.ActivityIndicator,{animating:!this.state.loaded,style:[styles.centering,{height:80}],size:'large'}));}},{key:'renderCell',value:function renderCell(rowData,sectionID,rowID,highlighRow){return _react2.default.createElement(_reactNative.View,{style:styles.cellStyle},_react2.default.createElement(_reactNative.Text,null,rowData.name.text));}}]);return City;}(_react.Component);
+};_this.state={dataSource:new _reactNative.ListView.DataSource({rowHasChanged:function rowHasChanged(row1,row2){return row1!==row2;},sectionHeaderHasChanged:function sectionHeaderHasChanged(s1,s2){return s1!==s2;}}),loaded:false};return _this;}babelHelpers.createClass(City,[{key:'render',value:function render(){var _this2=this;if(!this.state.loaded){return _react2.default.createElement(_reactNative.View,null,this.renderLoadingView());}return _react2.default.createElement(_reactNative.View,{style:styles.container},_react2.default.createElement(_reactNative.StatusBar,{barStyle:'default'}),_react2.default.createElement(_reactNative.TouchableOpacity,{onPress:function onPress(){return _this2.onBack();},style:[styles.cancelView]},_react2.default.createElement(_reactNative.Image,{source:require(442                       ),style:[styles.cancelImage]})),this.setListView());}},{key:'componentDidMount',value:function componentDidMount(){this.fetchData();}},{key:'fetchData',value:function fetchData(){var _this3=this;fetch('http://www.meituan.com/api/v1/divisions').then(function(response){return response.text();}).then(function(responseData){var result=new _xmlParser2.default().parseXmlText(responseData);var nameList=result.response.divisions.division;nameList.sort(function(a,b){return a.id.text.localeCompare(b.id.text);});var groupNameList=_lodash2.default.groupBy(nameList,function(x){return x.id.text[0];});_this3.setState({dataSource:_this3.state.dataSource.cloneWithRowsAndSections(groupNameList),loaded:true});}).catch(function(error){console.error(error);}).done();}},{key:'setListView',value:function setListView(){return _react2.default.createElement(_reactNative.View,null,_react2.default.createElement(_reactNative.ListView,{dataSource:this.state.dataSource,renderRow:this.renderCell,renderSectionHeader:this.renderSectionHeader}));}},{key:'onBack',value:function onBack(){this.props.navigator.pop();}},{key:'renderLoadingView',value:function renderLoadingView(){return _react2.default.createElement(_reactNative.View,null,_react2.default.createElement(_reactNative.ActivityIndicator,{animating:!this.state.loaded,style:[styles.centering,{height:80}],size:'large'}));}},{key:'renderCell',value:function renderCell(rowData,sectionID,rowID,highlighRow){return _react2.default.createElement(_reactNative.View,{style:styles.cellStyle},_react2.default.createElement(_reactNative.Text,null,rowData.name.text));}}]);return City;}(_react.Component); // 442 = ../../../icon/cancel.png
 
 
 var styles=_reactNative.StyleSheet.create({
 container:{
-flex:1,
-backgroundColor:"#FFE1FF"},
-
+flex:1},
 
 sectionStyle:{
 height:30,
@@ -74413,8 +74415,18 @@ backgroundColor:'#48D1CC',
 borderBottomWidth:0.5,
 borderBottomColor:'gray',
 flexDirection:'row',
-alignItems:'center'}});exports.default=
+alignItems:'center'},
 
+
+cancelView:{
+paddingTop:20,
+paddingLeft:5,
+paddingBottom:5},
+
+cancelImage:{
+width:20,
+height:20,
+tintColor:'#48D1CC'}});exports.default=
 
 
 
@@ -93718,6 +93730,8 @@ alignItems:'center'}});exports.default=
 
 NavBarStyle;
 }, 419, null, "MeGroup/components/Views/navBarStyle.js");
+__d(/* MeGroup/icon/cancel.png */function(global, require, module, exports) {module.exports = require(172                                         ).registerAsset({"__packager_asset":true,"httpServerLocation":"/assets/icon","width":32,"height":32,"scales":[1],"hash":"41e57492a233866b5af430f0e763a4f4","name":"cancel","type":"png"}); // 172 = react-native/Libraries/Image/AssetRegistry
+}, 442, null, "MeGroup/icon/cancel.png");
 __d(/* MeGroup/components/Home/homeType.js */function(global, require, module, exports) {Object.defineProperty(exports,"__esModule",{value:true});
 var _react=require(12     );var _react2=babelHelpers.interopRequireDefault(_react); // 12 = react
 var _reactNative=require(42            ); // 42 = react-native
@@ -94639,17 +94653,19 @@ var _reactNative=require(42            ); // 42 = react-native
 
 
 
-var _nearby=require(440              );var _nearby2=babelHelpers.interopRequireDefault(_nearby);var // 440 = ./NearBy/nearby
+var _nearby=require(440              );var _nearby2=babelHelpers.interopRequireDefault(_nearby); // 440 = ./NearBy/nearby
+var _city=require(413                     );var _city2=babelHelpers.interopRequireDefault(_city); // 413 = ./Home/CitySelect/city
+var _search2=require(443            );var _search3=babelHelpers.interopRequireDefault(_search2);var // 443 = ./Home/search
 
 Navigation=function(_Component){babelHelpers.inherits(Navigation,_Component);function Navigation(){babelHelpers.classCallCheck(this,Navigation);return babelHelpers.possibleConstructorReturn(this,(Navigation.__proto__||Object.getPrototypeOf(Navigation)).apply(this,arguments));}babelHelpers.createClass(Navigation,[{key:'render',value:function render()
 {var _this2=this;
 return(
-_react2.default.createElement(_reactNative.TouchableOpacity,{style:[styles.navigation],onPress:function onPress(){return _this2._search('Bottom');}},
-_react2.default.createElement(_reactNative.View,{style:[styles.headerNav]},
+_react2.default.createElement(_reactNative.View,{style:[styles.navigation]},
+_react2.default.createElement(_reactNative.TouchableOpacity,{style:[styles.headerNav],onPress:function onPress(){return _this2._search(_city2.default,'Bottom');}},
 _react2.default.createElement(_reactNative.Text,{style:[styles.whiteText]},'\u897F\u5B89'),
 _react2.default.createElement(_reactNative.Image,{source:require(434                           ),style:[styles.arrowDown]})), // 434 = ../icon/angle-arrow-down.png
 
-_react2.default.createElement(_reactNative.View,{style:[styles.headerSearch]},
+_react2.default.createElement(_reactNative.TouchableOpacity,{style:[styles.headerSearch],onPress:function onPress(){return _this2._search(_search3.default,'Bottom');}},
 _react2.default.createElement(_reactNative.View,{style:[styles.headerSearchDiv]},
 _react2.default.createElement(_reactNative.Image,{source:require(435                 ),style:[styles.searchIcon]}), // 435 = ../icon/search.png
 _react2.default.createElement(_reactNative.Text,{style:[styles.placeholder]},'\u81EA\u52A9\u9910'))),
@@ -94662,9 +94678,9 @@ _react2.default.createElement(_reactNative.Image,{source:require(437            
 
 
 }},{key:'_search',value:function _search(
-type){
+componentName,type){
 this.props.navigator.push({
-component:_nearby2.default,
+component:componentName,
 type:type});
 
 }}]);return Navigation;}(_react.Component);exports.default=
@@ -94744,6 +94760,23 @@ backgroundColor:'#F5FCFF'}});exports.default=
 
 Nearby;
 }, 440, null, "MeGroup/components/NearBy/nearby.js");
+__d(/* MeGroup/components/Home/search.js */function(global, require, module, exports) {Object.defineProperty(exports,"__esModule",{value:true});var _react=require(12     );var _react2=babelHelpers.interopRequireDefault(_react); // 12 = react
+var _reactNative=require(42            );var // 42 = react-native
+
+Search=function(_Component){babelHelpers.inherits(Search,_Component);function Search(){babelHelpers.classCallCheck(this,Search);return babelHelpers.possibleConstructorReturn(this,(Search.__proto__||Object.getPrototypeOf(Search)).apply(this,arguments));}babelHelpers.createClass(Search,[{key:"render",value:function render()
+{
+return(
+_react2.default.createElement(_reactNative.ScrollView,null,
+_react2.default.createElement(_reactNative.Text,null,"hahahah")));
+
+
+
+
+}}]);return Search;}(_react.Component);exports.default=
+
+
+Search;
+}, 443, null, "MeGroup/components/Home/search.js");
 __d(/* MeGroup/icon/angle-arrow-down.png */function(global, require, module, exports) {module.exports = require(172                                         ).registerAsset({"__packager_asset":true,"httpServerLocation":"/assets/icon","width":32,"height":32,"scales":[1],"hash":"441c17f57117c67753081bf8b77b073e","name":"angle-arrow-down","type":"png"}); // 172 = react-native/Libraries/Image/AssetRegistry
 }, 434, null, "MeGroup/icon/angle-arrow-down.png");
 __d(/* MeGroup/icon/search.png */function(global, require, module, exports) {module.exports = require(172                                         ).registerAsset({"__packager_asset":true,"httpServerLocation":"/assets/icon","width":32,"height":32,"scales":[1],"hash":"d9f1bb9262e8c2a2699083e93bc09386","name":"search","type":"png"}); // 172 = react-native/Libraries/Image/AssetRegistry

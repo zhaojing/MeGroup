@@ -12,10 +12,12 @@ import {
     Dimensions,
     StyleSheet,
     Alert,
+    StatusBar,
     ActivityIndicator
 } from "react-native";
 import XmlParser from '../../Model/xmlParser';
 import NavBarStyle from '../../Views/navBarStyle';
+import Home from '../home';
 
 
 class City extends Component {
@@ -34,15 +36,17 @@ class City extends Component {
         if (!this.state.loaded) {
             return (
                 <View>
-                    <NavBarStyle selectBack = {()=> this.onBack()}/>
                     {this.renderLoadingView()}
                 </View>
             )
         }
 
         return (
-            <View>
-                {this.setNavigationBar()}
+            <View style={styles.container}>
+                <StatusBar barStyle="default" />
+                <TouchableOpacity onPress={() => this.onBack()} style={[styles.cancelView]} >
+                    <Image source={require('../../../icon/cancel.png')} style={[styles.cancelImage]} />
+                </TouchableOpacity>
                 {this.setListView()}
             </View>
         );
@@ -116,9 +120,7 @@ class City extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "#FFE1FF"
     },
-
     sectionStyle: {
         height: 30,
         backgroundColor: '#E5E5E5',
@@ -149,6 +151,16 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center'
         // paddingTop: Platform.OS === 'ios' ? 15 : 0
+    },
+    cancelView: {
+        paddingTop: 20,
+        paddingLeft:5,
+        paddingBottom:5,
+    },
+    cancelImage: {
+        width: 20,
+        height: 20,
+        tintColor: '#48D1CC'
     }
 })
 

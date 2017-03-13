@@ -8,32 +8,34 @@ import {
     TouchableOpacity,
     StyleSheet
 } from 'react-native';
-import Nearby from './NearBy/nearby'
+import Nearby from './NearBy/nearby';
+import City from './Home/CitySelect/city';
+import Search from './Home/search';
 
 class Navigation extends Component {
     render() {
         return (
-            <TouchableOpacity style={[styles.navigation]} onPress={()=>this._search('Bottom')}>
-                <View style={[styles.headerNav]}>
+            <View style={[styles.navigation]}>
+                <TouchableOpacity style={[styles.headerNav]} onPress={()=>this._search(City,'Bottom')}>
                     <Text style={[styles.whiteText]}>西安</Text>
                     <Image source={require('../icon/angle-arrow-down.png')} style={[styles.arrowDown]} />
-                </View>
-                <View style={[styles.headerSearch]}>
+                </TouchableOpacity>
+                <TouchableOpacity style={[styles.headerSearch]} onPress={()=>this._search(Search,'Bottom')}>
                     <View style={[styles.headerSearchDiv]} >
                         <Image source={require('../icon/search.png')} style={[styles.searchIcon]} />
                         <Text style={[styles.placeholder]}>自助餐</Text>
                     </View>
-                </View>
+                </TouchableOpacity>
                 <View style={[styles.headerNav]}>
                     <Image source={require('../icon/qr-code.png')} style={[styles.qrCodeAndNotification]} />
                     <Image source={require('../icon/notification.png')} style={[styles.qrCodeAndNotification]} />
                 </View>
-            </TouchableOpacity>
+            </View>
         );
     }
-    _search(type) {
+    _search(componentName,type) {
     this.props.navigator.push({
-      component: Nearby,
+      component: componentName,
       type: type
     })
   }
