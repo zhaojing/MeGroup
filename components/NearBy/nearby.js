@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet } from "react-native";
-import TabbarView from './TabbarView'
+import TabbarView from '../TabbarView'
 
 class Nearby extends Component {
     render() {

@@ -12,7 +12,7 @@ import {
     ActivityIndicator
 } from "react-native";
 
-class Like extends Component {
+class HomeLike extends Component {
 
     renderRow(row) {
         return (
@@ -55,4 +55,4 @@ var styles = StyleSheet.create({
     block: { flex: 1 },
 })
 
-export default Like;
+export default HomeLike;

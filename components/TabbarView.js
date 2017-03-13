@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, Navigator, StatusBar, Image } from "react-native";
 import TabNavigator from 'react-native-tab-navigator'
-import Home from './home'
-import Mine from './mine'
-import Nearby from './nearby'
+import Home from './Home/home'
+import Mine from './Mine/mine'
+import Nearby from './NearBy/nearby'
 
 class TabbarView extends Component {
     constructor(props) {

@@ -13,7 +13,7 @@ import {
     Alert,
     ActivityIndicator
 } from "react-native";
-import XmlParser from './model/xmlParser';
+import XmlParser from '../Model/xmlParser';
 
 class HomeList extends Component {
     constructor(props) {
@@ -39,21 +39,21 @@ class HomeList extends Component {
     }
 
     fetchData() {
-        fetch('http://api.union.meituan.com/data/api?city=%E8%A5%BF%E5%AE%89&category=%E7%BE%8E%E9%A3%9F&limit=40')
-            .then((response) => response.text())
-            .then((responseData) => {
-                var result = new XmlParser().parseXmlText(responseData);
-                var likeData = result.response.deals.data;
-                console.log('betta   ' + JSON.stringify(likeData))
-                this.setState({
-                    dataSource: this.state.dataSource.cloneWithRows(likeData),
-                    loaded: true,
-                });
-            })
-            .catch((error) => {
-                console.error(error)
-            })
-            .done();
+        // fetch('http://api.union.meituan.com/data/api?city=%E8%A5%BF%E5%AE%89&category=%E7%BE%8E%E9%A3%9F&limit=40')
+        //     .then((response) => response.text())
+        //     .then((responseData) => {
+        //         var result = new XmlParser().parseXmlText(responseData);
+        //         var likeData = result.response.deals.data;
+        //         console.log('betta   ' + JSON.stringify(likeData))
+        //         this.setState({
+        //             dataSource: this.state.dataSource.cloneWithRows(likeData),
+        //             loaded: true,
+        //         });
+        //     })
+        //     .catch((error) => {
+        //         console.error(error)
+        //     })
+        //     .done();
     }
     setListView() {
         return (

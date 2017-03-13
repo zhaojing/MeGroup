@@ -13,7 +13,6 @@ import {
   View
 } from 'react-native';
 import TabbarView from './components/TabbarView'
-import Nearby from './components/nearby'
 
 const defaultRoute = {
   component: TabbarView,

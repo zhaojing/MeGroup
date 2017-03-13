@@ -14,8 +14,8 @@ import {
     Alert,
     ActivityIndicator
 } from "react-native";
-import XmlParser from './model/xmlParser';
-import NavBarStyle from './Views/navBarStyle';
+import XmlParser from '../../Model/xmlParser';
+import NavBarStyle from '../../Views/navBarStyle';
 
 
 class City extends Component {

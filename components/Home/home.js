@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { AppRegistry, View, Text, StyleSheet, StatusBar, TouchableOpacity, ScrollView } from "react-native";
-import City from './city'
+import City from './CitySelect/city'
 import HomeType from './homeType'
-import Like from './like'
+import HomeLike from './homeLike'
 import HomeList from './homeList'
-import Navigation from './navigationView'
-import Default from './default'
+import Navigation from '../navigationView'
+import Default from '../default'
 
 class Home extends Component {
     render() {
@@ -17,7 +17,7 @@ class Home extends Component {
                     <HomeType selectedButton={(typeId) => this.selectedTypeButton(typeId)} />
                 </View>
                 <View style={styles.spaceStyle}></View>
-                <Like />
+                <HomeLike />
                 <View style={styles.spaceStyle}></View>
                 <Text style={{ color: '#D6D6D6', textAlign: 'center', paddingTop: 10 }}>－猜你喜欢－</Text>
                 <HomeList />

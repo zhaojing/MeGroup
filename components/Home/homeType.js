@@ -7,26 +7,26 @@ class HomeType extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            imageProps: { name: '美食', icon: require('../images/type1.png') },
+            imageProps: { name: '美食', icon: require('../../images/type1.png') },
             all: [[
-                { id: 'food', name: '美食', icon: require('../images/type1.png') },
-                { id: 'movie', name: '电影', icon: require('../images/type2.png') },
-                { id: 'hotel', name: '酒店', icon: require('../images/type3.png') },
-                { id: 'KTV', name: 'KTV', icon: require('../images/type4.png') },
-                { id: 'list', name: '新日新单', icon: require('../images/type5.png') },
-                { id: 'coupon', name: '代金券', icon: require('../images/type6.png') },
-                { id: 'travel', name: '周边游', icon: require('../images/type7.png') },
-                { id: 'cake', name: '蛋糕甜点', icon: require('../images/type8.png') }
+                { id: 'food', name: '美食', icon: require('../../images/type1.png') },
+                { id: 'movie', name: '电影', icon: require('../../images/type2.png') },
+                { id: 'hotel', name: '酒店', icon: require('../../images/type3.png') },
+                { id: 'KTV', name: 'KTV', icon: require('../../images/type4.png') },
+                { id: 'list', name: '新日新单', icon: require('../../images/type5.png') },
+                { id: 'coupon', name: '代金券', icon: require('../../images/type6.png') },
+                { id: 'travel', name: '周边游', icon: require('../../images/type7.png') },
+                { id: 'cake', name: '蛋糕甜点', icon: require('../../images/type8.png') }
             ],
             [
-                { id: 'highHotel', name: '高端酒店', icon: require('../images/type1.png') },
-                { id: 'exercise', name: '运动健身', icon: require('../images/type2.png') },
-                { id: 'life', name: '生活服务', icon: require('../images/type3.png') },
-                { id: '', name: '母婴亲子', icon: require('../images/type4.png') },
-                { id: 'marry', name: '结婚', icon: require('../images/type5.png') },
-                { id: 'scenic', name: '景点', icon: require('../images/type6.png') },
-                { id: 'spring', name: '温泉', icon: require('../images/type7.png') },
-                { id: '', name: '学习培训', icon: require('../images/type8.png') }
+                { id: 'highHotel', name: '高端酒店', icon: require('../../images/type1.png') },
+                { id: 'exercise', name: '运动健身', icon: require('../../images/type2.png') },
+                { id: 'life', name: '生活服务', icon: require('../../images/type3.png') },
+                { id: '', name: '母婴亲子', icon: require('../../images/type4.png') },
+                { id: 'marry', name: '结婚', icon: require('../../images/type5.png') },
+                { id: 'scenic', name: '景点', icon: require('../../images/type6.png') },
+                { id: 'spring', name: '温泉', icon: require('../../images/type7.png') },
+                { id: '', name: '学习培训', icon: require('../../images/type8.png') }
             ]]
         };
     }
