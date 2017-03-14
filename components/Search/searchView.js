@@ -13,7 +13,7 @@ import {
 
 var STOREHISTORY_KEY = '@SearchHistory:key';
 var STORELIST_KEY = '@SearchList:key';
-const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2})
+const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 })
 class SearchView extends Component {
     constructor(props) {
         super(props);
@@ -39,13 +39,29 @@ class SearchView extends Component {
                     </View>
                 </View>
                 <ListView
-                    dataSource={this.state.list}
-                    renderRow={(rowData) => <Text>{rowData.name} {rowData.count}</Text>}
+                    dataSource={ds.cloneWithRows(this.state.list)}
+                    renderRow={(rowData) => this.cell(rowData)}
                 />
             </View>
         );
     }
 
+    cell(rowData) {
+        return (
+            <View style={[styles.cell]}>
+                <TouchableOpacity>
+                <View style={[styles.cellData]}>
+                    <View style={[styles.cellIconAndText]}>
+                        <Image source={require('../../icon/search.png')} style={[styles.searchIcon]} />
+                        <Text>{rowData.name}</Text>
+                    </View>
+                    <Text style={[styles.detail]}>约{rowData.count}个结果</Text>
+                </View>
+                <View style={[styles.line]} />
+                </TouchableOpacity>
+            </View>
+        );
+    }
     componentDidMount() {
         this._storeInitialSearchList().done;
         this._loadInitialSearchList().done;
@@ -126,6 +142,31 @@ const styles = StyleSheet.create({
     cancel: {
         marginRight: 10,
         color: '#21C0AD'
+    },
+    cell: {
+        marginLeft: 10,
+        flexDirection: 'column',
+    },
+    cellData: {
+        marginVertical: 5,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center'
+    },
+    cellIconAndText: {
+        flexDirection: 'row',
+        justifyContent: 'flex-start',
+        alignItems: 'center'
+    },
+    detail: {
+        fontSize: 12,
+        color: '#B1B1B1',
+        marginRight: 5,
+    },
+    line: {
+        flex: 1,
+        height: 0.5,
+        backgroundColor: '#EAEAEA'
     }
 })
 

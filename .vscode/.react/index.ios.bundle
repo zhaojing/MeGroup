@@ -93776,7 +93776,7 @@ var weakself=this;
 var all=this.state.all.map(function(arr){
 var group=arr.map(function(row){
 return(
-_react2.default.createElement(_reactNative.TouchableOpacity,{style:styles.item,onPress:function onPress(){return weakself.butonSelect(row.id);}},
+_react2.default.createElement(_reactNative.TouchableOpacity,{key:row.id,style:styles.item,onPress:function onPress(){return weakself.butonSelect(row.id);}},
 _react2.default.createElement(_reactNative.Image,{source:row.icon,style:{width:50,height:50}}),
 _react2.default.createElement(_reactNative.Text,{style:{paddingTop:5}},row.name)));
 
@@ -94601,8 +94601,13 @@ rowData,sectionID,rowID,highlighRow){
 return(
 _react2.default.createElement(_reactNative.View,{style:styles.cellStyle},
 _react2.default.createElement(_reactNative.Image,{source:{uri:rowData.imgurl},defaultSource:placeholder,style:{marginLeft:10,width:80,height:80,backgroundColor:'#FFE1FF'}}),
-_react2.default.createElement(_reactNative.View,{style:{marginLeft:10,marginRight:100,marginTop:10,marginBottom:10,justifyContent:'space-between'}},
+_react2.default.createElement(_reactNative.View,{style:{felx:0.6,marginLeft:10,marginRight:100,marginTop:10,marginBottom:10,justifyContent:'space-between',backgroundColor:'blue'}},
+_react2.default.createElement(_reactNative.View,{style:{flexDirection:'row',marginRight:0,backgroundColor:'red'}},
 _react2.default.createElement(_reactNative.Text,{style:{fontSize:15}},rowData.mname),
+_react2.default.createElement(_reactNative.TouchableOpacity,{style:{backgroundColor:'#48D1CC',justifyContent:'flex-end',marginRight:10,borderRadius:5}},
+_react2.default.createElement(_reactNative.Text,{style:{color:'#FFFFFF'}},' \u6536\u85CF '))),
+
+
 _react2.default.createElement(_reactNative.Text,{style:{color:'#969696',fontSize:12}},rowData.mtitle),
 _react2.default.createElement(_reactNative.Text,{style:{color:'red',fontSize:15}},'\uFFE5',rowData.price))));
 
@@ -94779,11 +94784,26 @@ var _reactNative=require(42            ); // 42 = react-native
 
 
 var STOREHISTORY_KEY='@SearchHistory:key';
-var STORELIST_KEY='@SearchList:key';var
-
+var STORELIST_KEY='@SearchList:key';
+var ds=new _reactNative.ListView.DataSource({rowHasChanged:function rowHasChanged(r1,r2){return r1!==r2;}});var
 SearchView=function(_Component){babelHelpers.inherits(SearchView,_Component);
 function SearchView(props){var _this2=this;babelHelpers.classCallCheck(this,SearchView);var _this=babelHelpers.possibleConstructorReturn(this,(SearchView.__proto__||Object.getPrototypeOf(SearchView)).call(this,
 props));_this.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -94849,7 +94869,7 @@ _loadInitialHistory=function _callee3(){var value;return regeneratorRuntime.asyn
 _reactNative.AsyncStorage.getItem(STOREHISTORY_KEY));case 3:value=_context3.sent;
 _this.setState({history:value});_context3.next=10;break;case 7:_context3.prev=7;_context3.t0=_context3['catch'](0);
 
-console.log(_context3.t0);case 10:case'end':return _context3.stop();}}},null,_this2,[[0,7]]);};_this.state={list:[{}],history:'youyou'};return _this;}babelHelpers.createClass(SearchView,[{key:'render',value:function render(){var _this3=this;return _react2.default.createElement(_reactNative.View,{style:[styles.container]},_react2.default.createElement(_reactNative.View,null,_react2.default.createElement(_reactNative.StatusBar,{barStyle:'default'}),_react2.default.createElement(_reactNative.View,{style:[styles.nav]},_react2.default.createElement(_reactNative.View,{style:[styles.search]},_react2.default.createElement(_reactNative.Image,{source:require(439                    ),style:[styles.searchIcon]}),_react2.default.createElement(_reactNative.TextInput,{placeholder:this.state.list[0].name,style:[styles.searchTextInput]})),_react2.default.createElement(_reactNative.TouchableOpacity,{onPress:function onPress(){return _this3.onBack();}},_react2.default.createElement(_reactNative.Text,{style:[styles.cancel]},'\u53D6\u6D88')))),_react2.default.createElement(_reactNative.ListView,{dataSource:this.state.list,renderRow:function renderRow(rowData){return _react2.default.createElement(_reactNative.Text,null,rowData.name,' ',rowData.count);}}));}},{key:'componentDidMount',value:function componentDidMount(){this._storeInitialSearchList().done;this._loadInitialSearchList().done;this._loadInitialHistory().done();}},{key:'onBack',value:function onBack() // 439 = ../../icon/search.png
+console.log(_context3.t0);case 10:case'end':return _context3.stop();}}},null,_this2,[[0,7]]);};_this.state={list:[{}],history:'youyou'};return _this;}babelHelpers.createClass(SearchView,[{key:'render',value:function render(){var _this3=this;return _react2.default.createElement(_reactNative.View,{style:[styles.container]},_react2.default.createElement(_reactNative.View,null,_react2.default.createElement(_reactNative.StatusBar,{barStyle:'default'}),_react2.default.createElement(_reactNative.View,{style:[styles.nav]},_react2.default.createElement(_reactNative.View,{style:[styles.search]},_react2.default.createElement(_reactNative.Image,{source:require(439                    ),style:[styles.searchIcon]}),_react2.default.createElement(_reactNative.TextInput,{placeholder:this.state.list[0].name,style:[styles.searchTextInput]})),_react2.default.createElement(_reactNative.TouchableOpacity,{onPress:function onPress(){return _this3.onBack();}},_react2.default.createElement(_reactNative.Text,{style:[styles.cancel]},'\u53D6\u6D88')))),_react2.default.createElement(_reactNative.ListView,{dataSource:ds.cloneWithRows(this.state.list),renderRow:function renderRow(rowData){return _this3.cell(rowData);}}));}},{key:'cell',value:function cell(rowData){return _react2.default.createElement(_reactNative.View,{style:[styles.cell]},_react2.default.createElement(_reactNative.TouchableOpacity,null,_react2.default.createElement(_reactNative.View,{style:[styles.cellData]},_react2.default.createElement(_reactNative.View,{style:[styles.cellIconAndText]},_react2.default.createElement(_reactNative.Image,{source:require(439                    ),style:[styles.searchIcon]}),_react2.default.createElement(_reactNative.Text,null,rowData.name)),_react2.default.createElement(_reactNative.Text,{style:[styles.detail]},'\u7EA6',rowData.count,'\u4E2A\u7ED3\u679C')),_react2.default.createElement(_reactNative.View,{style:[styles.line]})));}},{key:'componentDidMount',value:function componentDidMount(){this._storeInitialSearchList().done;this._loadInitialSearchList().done;this._loadInitialHistory().done();}},{key:'onBack',value:function onBack() // 439 = ../../icon/search.png // 439 = ../../icon/search.png
 
 
 
@@ -94893,7 +94913,32 @@ fontSize:12},
 
 cancel:{
 marginRight:10,
-color:'#21C0AD'}});exports.default=
+color:'#21C0AD'},
+
+cell:{
+marginLeft:10,
+flexDirection:'column'},
+
+cellData:{
+marginVertical:5,
+flexDirection:'row',
+justifyContent:'space-between',
+alignItems:'center'},
+
+cellIconAndText:{
+flexDirection:'row',
+justifyContent:'flex-start',
+alignItems:'center'},
+
+detail:{
+fontSize:12,
+color:'#B1B1B1',
+marginRight:5},
+
+line:{
+flex:1,
+height:0.5,
+backgroundColor:'#EAEAEA'}});exports.default=
 
 
 
