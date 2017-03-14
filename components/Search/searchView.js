@@ -10,6 +10,7 @@ import {
     TouchableOpacity,
     ListView
 } from "react-native";
+import SearchList from './searchList';
 
 var STOREHISTORY_KEY = '@SearchHistory:key';
 var STORELIST_KEY = '@SearchList:key';
@@ -31,7 +32,7 @@ class SearchView extends Component {
                     <View style={[styles.nav]} >
                         <View style={[styles.search]}>
                             <Image source={require('../../icon/search.png')} style={[styles.searchIcon]} />
-                            <TextInput placeholder={this.state.list[0].name} onChangeText={(text) => this.search(text)} style={[styles.searchTextInput]}></TextInput>
+                            <TextInput placeholder={this.state.list[0].name} onChangeText={(text) => this.search(text)} onEndEditing={(text) => this.searchList(text)} autoFocus={true} returnKeyType='search' style={[styles.searchTextInput]}></TextInput>
                         </View>
                         <TouchableOpacity onPress={() => this.onBack()}>
                             <Text style={[styles.cancel]}>取消
@@ -50,7 +51,7 @@ class SearchView extends Component {
     cell(rowData) {
         return (
             <View style={[styles.cell]}>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={()=> this.searchList()}>
                     <View style={[styles.cellData]}>
                         <View style={[styles.cellIconAndText]}>
                             <Image source={require('../../icon/search.png')} style={[styles.searchIcon]} />
@@ -112,6 +113,12 @@ class SearchView extends Component {
             return item.name.indexOf(text) > -1;
         });
         this.setState({ searchResult: result })
+    }
+
+    searchList(text) {
+        this.props.navigator.push({
+            component: SearchList,
+        })
     }
 }
 

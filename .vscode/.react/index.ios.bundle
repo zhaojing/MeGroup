@@ -94786,6 +94786,7 @@ var _reactNative=require(42            ); // 42 = react-native
 
 
 
+var _searchList=require(446           );var _searchList2=babelHelpers.interopRequireDefault(_searchList); // 446 = ./searchList
 
 var STOREHISTORY_KEY='@SearchHistory:key';
 var STORELIST_KEY='@SearchList:key';
@@ -94875,7 +94876,7 @@ _loadInitialHistory=function _callee3(){var value;return regeneratorRuntime.asyn
 _reactNative.AsyncStorage.getItem(STOREHISTORY_KEY));case 3:value=_context3.sent;
 _this.setState({history:value});_context3.next=10;break;case 7:_context3.prev=7;_context3.t0=_context3['catch'](0);
 
-console.log(_context3.t0);case 10:case'end':return _context3.stop();}}},null,_this2,[[0,7]]);};_this.state={list:[{}],searchResult:[{}],history:'youyou'};return _this;}babelHelpers.createClass(SearchView,[{key:'render',value:function render(){var _this3=this;return _react2.default.createElement(_reactNative.View,{style:[styles.container]},_react2.default.createElement(_reactNative.View,null,_react2.default.createElement(_reactNative.StatusBar,{barStyle:'default'}),_react2.default.createElement(_reactNative.View,{style:[styles.nav]},_react2.default.createElement(_reactNative.View,{style:[styles.search]},_react2.default.createElement(_reactNative.Image,{source:require(439                    ),style:[styles.searchIcon]}),_react2.default.createElement(_reactNative.TextInput,{placeholder:this.state.list[0].name,onChangeText:function onChangeText(text){return _this3.search(text);},style:[styles.searchTextInput]})),_react2.default.createElement(_reactNative.TouchableOpacity,{onPress:function onPress(){return _this3.onBack();}},_react2.default.createElement(_reactNative.Text,{style:[styles.cancel]},'\u53D6\u6D88')))),_react2.default.createElement(_reactNative.ListView,{dataSource:ds.cloneWithRows(this.state.searchResult),renderRow:function renderRow(rowData){return _this3.cell(rowData);}}));}},{key:'cell',value:function cell(rowData){return _react2.default.createElement(_reactNative.View,{style:[styles.cell]},_react2.default.createElement(_reactNative.TouchableOpacity,null,_react2.default.createElement(_reactNative.View,{style:[styles.cellData]},_react2.default.createElement(_reactNative.View,{style:[styles.cellIconAndText]},_react2.default.createElement(_reactNative.Image,{source:require(439                    ),style:[styles.searchIcon]}),_react2.default.createElement(_reactNative.Text,null,rowData.name)),_react2.default.createElement(_reactNative.Text,{style:[styles.detail]},'\u7EA6',rowData.count,'\u4E2A\u7ED3\u679C')),_react2.default.createElement(_reactNative.View,{style:[styles.line]})));}},{key:'componentDidMount',value:function componentDidMount(){this._storeInitialSearchList().done;this._loadInitialSearchList().done;this._loadInitialHistory().done();}},{key:'onBack',value:function onBack() // 439 = ../../icon/search.png // 439 = ../../icon/search.png
+console.log(_context3.t0);case 10:case'end':return _context3.stop();}}},null,_this2,[[0,7]]);};_this.state={list:[{}],searchResult:[{}],history:'youyou'};return _this;}babelHelpers.createClass(SearchView,[{key:'render',value:function render(){var _this3=this;return _react2.default.createElement(_reactNative.View,{style:[styles.container]},_react2.default.createElement(_reactNative.View,null,_react2.default.createElement(_reactNative.StatusBar,{barStyle:'default'}),_react2.default.createElement(_reactNative.View,{style:[styles.nav]},_react2.default.createElement(_reactNative.View,{style:[styles.search]},_react2.default.createElement(_reactNative.Image,{source:require(439                    ),style:[styles.searchIcon]}),_react2.default.createElement(_reactNative.TextInput,{placeholder:this.state.list[0].name,onChangeText:function onChangeText(text){return _this3.search(text);},onEndEditing:function onEndEditing(text){return _this3.searchList(text);},autoFocus:true,returnKeyType:'search',style:[styles.searchTextInput]})),_react2.default.createElement(_reactNative.TouchableOpacity,{onPress:function onPress(){return _this3.onBack();}},_react2.default.createElement(_reactNative.Text,{style:[styles.cancel]},'\u53D6\u6D88')))),_react2.default.createElement(_reactNative.ListView,{dataSource:ds.cloneWithRows(this.state.searchResult),renderRow:function renderRow(rowData){return _this3.cell(rowData);}}));}},{key:'cell',value:function cell(rowData){var _this4=this;return _react2.default.createElement(_reactNative.View,{style:[styles.cell]},_react2.default.createElement(_reactNative.TouchableOpacity,{onPress:function onPress(){return _this4.searchList();}},_react2.default.createElement(_reactNative.View,{style:[styles.cellData]},_react2.default.createElement(_reactNative.View,{style:[styles.cellIconAndText]},_react2.default.createElement(_reactNative.Image,{source:require(439                    ),style:[styles.searchIcon]}),_react2.default.createElement(_reactNative.Text,null,rowData.name)),_react2.default.createElement(_reactNative.Text,{style:[styles.detail]},'\u7EA6',rowData.count,'\u4E2A\u7ED3\u679C')),_react2.default.createElement(_reactNative.View,{style:[styles.line]})));}},{key:'componentDidMount',value:function componentDidMount(){this._storeInitialSearchList().done;this._loadInitialSearchList().done;this._loadInitialHistory().done();}},{key:'onBack',value:function onBack() // 439 = ../../icon/search.png // 439 = ../../icon/search.png
 
 
 
@@ -94888,6 +94889,12 @@ var result=this.state.list.filter(function(item){
 return item.name.indexOf(text)>-1;
 });
 this.setState({searchResult:result});
+}},{key:'searchList',value:function searchList(
+
+text){
+this.props.navigator.push({
+component:_searchList2.default});
+
 }}]);return SearchView;}(_react.Component);
 
 
@@ -94957,6 +94964,33 @@ backgroundColor:'#EAEAEA'}});exports.default=
 
 SearchView;
 }, 437, null, "MeGroup/components/Search/searchView.js");
+__d(/* MeGroup/components/Search/searchList.js */function(global, require, module, exports) {Object.defineProperty(exports,"__esModule",{value:true});var _react=require(12     );var _react2=babelHelpers.interopRequireDefault(_react); // 12 = react
+var _reactNative=require(42            ); // 42 = react-native
+
+
+
+
+
+var _navBarStyle=require(419                   );var _navBarStyle2=babelHelpers.interopRequireDefault(_navBarStyle);var // 419 = ../Views/navBarStyle
+
+SearchList=function(_Component){babelHelpers.inherits(SearchList,_Component);function SearchList(){babelHelpers.classCallCheck(this,SearchList);return babelHelpers.possibleConstructorReturn(this,(SearchList.__proto__||Object.getPrototypeOf(SearchList)).apply(this,arguments));}babelHelpers.createClass(SearchList,[{key:'render',value:function render()
+{var _this2=this;
+return(
+_react2.default.createElement(_reactNative.View,null,
+_react2.default.createElement(_reactNative.StatusBar,{barStyle:'light-content'}),
+_react2.default.createElement(_navBarStyle2.default,{selectBack:function selectBack(){return _this2.onBack();}}),
+_react2.default.createElement(_reactNative.Text,null,'\u656C\u8BF7\u671F\u5F85')));
+
+
+}},{key:'onBack',value:function onBack()
+
+{
+this.props.navigator.pop();
+}}]);return SearchList;}(_react.Component);exports.default=
+
+
+SearchList;
+}, 446, null, "MeGroup/components/Search/searchList.js");
 __d(/* MeGroup/icon/search.png */function(global, require, module, exports) {module.exports = require(172                                         ).registerAsset({"__packager_asset":true,"httpServerLocation":"/assets/icon","width":32,"height":32,"scales":[1],"hash":"d9f1bb9262e8c2a2699083e93bc09386","name":"search","type":"png"}); // 172 = react-native/Libraries/Image/AssetRegistry
 }, 439, null, "MeGroup/icon/search.png");
 __d(/* MeGroup/icon/angle-arrow-down.png */function(global, require, module, exports) {module.exports = require(172                                         ).registerAsset({"__packager_asset":true,"httpServerLocation":"/assets/icon","width":32,"height":32,"scales":[1],"hash":"441c17f57117c67753081bf8b77b073e","name":"angle-arrow-down","type":"png"}); // 172 = react-native/Libraries/Image/AssetRegistry
