@@ -19,6 +19,7 @@ class SearchView extends Component {
         super(props);
         this.state = {
             list: [{}],
+            searchResult: [{}],
             history: 'youyou',
         };
     }
@@ -30,7 +31,7 @@ class SearchView extends Component {
                     <View style={[styles.nav]} >
                         <View style={[styles.search]}>
                             <Image source={require('../../icon/search.png')} style={[styles.searchIcon]} />
-                            <TextInput placeholder={this.state.list[0].name} style={[styles.searchTextInput]}></TextInput>
+                            <TextInput placeholder={this.state.list[0].name} onChangeText={(text) => this.search(text)} style={[styles.searchTextInput]}></TextInput>
                         </View>
                         <TouchableOpacity onPress={() => this.onBack()}>
                             <Text style={[styles.cancel]}>取消
@@ -39,7 +40,7 @@ class SearchView extends Component {
                     </View>
                 </View>
                 <ListView
-                    dataSource={ds.cloneWithRows(this.state.list)}
+                    dataSource={ds.cloneWithRows(this.state.searchResult)}
                     renderRow={(rowData) => this.cell(rowData)}
                 />
             </View>
@@ -50,14 +51,14 @@ class SearchView extends Component {
         return (
             <View style={[styles.cell]}>
                 <TouchableOpacity>
-                <View style={[styles.cellData]}>
-                    <View style={[styles.cellIconAndText]}>
-                        <Image source={require('../../icon/search.png')} style={[styles.searchIcon]} />
-                        <Text>{rowData.name}</Text>
+                    <View style={[styles.cellData]}>
+                        <View style={[styles.cellIconAndText]}>
+                            <Image source={require('../../icon/search.png')} style={[styles.searchIcon]} />
+                            <Text>{rowData.name}</Text>
+                        </View>
+                        <Text style={[styles.detail]}>约{rowData.count}个结果</Text>
                     </View>
-                    <Text style={[styles.detail]}>约{rowData.count}个结果</Text>
-                </View>
-                <View style={[styles.line]} />
+                    <View style={[styles.line]} />
                 </TouchableOpacity>
             </View>
         );
@@ -79,7 +80,7 @@ class SearchView extends Component {
         try {
             await AsyncStorage.setItem(STORELIST_KEY, listString);
         } catch (error) {
-            this.setState({ list: listString });
+            this.setState({ list: listString, searchResult: list });
         }
     }
 
@@ -87,6 +88,7 @@ class SearchView extends Component {
         try {
             var listString = await AsyncStorage.getItem(STORELIST_KEY);
             this.setState({ list: JSON.parse(listString) });
+            this.setState({ searchResult: this.state.list });
         } catch (error) {
             console.log(error);
         }
@@ -103,6 +105,13 @@ class SearchView extends Component {
 
     onBack() {
         this.props.navigator.pop()
+    }
+
+    search(text) {
+        var result = this.state.list.filter((item) => {
+            return item.name.indexOf(text) > -1;
+        });
+        this.setState({ searchResult: result })
     }
 }
 
