@@ -68646,8 +68646,8 @@ __d(/* MeGroup/components/TabbarView.js */function(global, require, module, expo
 var _reactNative=require(42            ); // 42 = react-native
 var _reactNativeTabNavigator=require(404                         );var _reactNativeTabNavigator2=babelHelpers.interopRequireDefault(_reactNativeTabNavigator); // 404 = react-native-tab-navigator
 var _home=require(412          );var _home2=babelHelpers.interopRequireDefault(_home); // 412 = ./Home/home
-var _mine=require(442          );var _mine2=babelHelpers.interopRequireDefault(_mine); // 442 = ./Mine/mine
-var _nearby=require(435              );var _nearby2=babelHelpers.interopRequireDefault(_nearby);var // 435 = ./NearBy/nearby
+var _mine=require(444          );var _mine2=babelHelpers.interopRequireDefault(_mine); // 444 = ./Mine/mine
+var _nearby=require(436              );var _nearby2=babelHelpers.interopRequireDefault(_nearby);var // 436 = ./NearBy/nearby
 
 TabbarView=function(_Component){babelHelpers.inherits(TabbarView,_Component);
 function TabbarView(props){babelHelpers.classCallCheck(this,TabbarView);var _this=babelHelpers.possibleConstructorReturn(this,(TabbarView.__proto__||Object.getPrototypeOf(TabbarView)).call(this,
@@ -68667,7 +68667,7 @@ _react2.default.createElement(_reactNativeTabNavigator2.default.Item,{
 selected:this.state.selectedTab==='首页',
 title:'\u9996\u9875',
 titleStyle:styles.tabText,
-renderIcon:function renderIcon(){return _react2.default.createElement(_reactNative.Image,{source:require(443               )});}, // 443 = ../icon/home.png
+renderIcon:function renderIcon(){return _react2.default.createElement(_reactNative.Image,{source:require(445               )});}, // 445 = ../icon/home.png
 selectedTitleStyle:styles.selectedTabText,
 onPress:function onPress(){return _this2.setState({selectedTab:'首页'});}},
 _react2.default.createElement(_home2.default,{navigator:this.props.navigator})),
@@ -74179,15 +74179,16 @@ var _city=require(413                );var _city2=babelHelpers.interopRequireDef
 var _homeType=require(421         );var _homeType2=babelHelpers.interopRequireDefault(_homeType); // 421 = ./homeType
 var _homeLike=require(432         );var _homeLike2=babelHelpers.interopRequireDefault(_homeLike); // 432 = ./homeLike
 var _homeList=require(433         );var _homeList2=babelHelpers.interopRequireDefault(_homeList); // 433 = ./homeList
-var _navigationView=require(434                );var _navigationView2=babelHelpers.interopRequireDefault(_navigationView); // 434 = ../navigationView
-var _default=require(441         );var _default2=babelHelpers.interopRequireDefault(_default);var // 441 = ../default
+var _navigationView=require(435                );var _navigationView2=babelHelpers.interopRequireDefault(_navigationView); // 435 = ../navigationView
+var _default=require(443         );var _default2=babelHelpers.interopRequireDefault(_default);var // 443 = ../default
 
 Home=function(_Component){babelHelpers.inherits(Home,_Component);function Home(){babelHelpers.classCallCheck(this,Home);return babelHelpers.possibleConstructorReturn(this,(Home.__proto__||Object.getPrototypeOf(Home)).apply(this,arguments));}babelHelpers.createClass(Home,[{key:'render',value:function render()
 {var _this2=this;
 return(
-_react2.default.createElement(_reactNative.ScrollView,{style:styles.container},
+_react2.default.createElement(_reactNative.View,{style:styles.container},
 _react2.default.createElement(_reactNative.View,{style:{height:18,backgroundColor:'#21C0AD'}}),
 _react2.default.createElement(_navigationView2.default,{navigator:this.props.navigator,style:{paddingTop:20}}),
+_react2.default.createElement(_reactNative.ScrollView,null,
 _react2.default.createElement(_reactNative.View,{style:{height:200}},
 _react2.default.createElement(_homeType2.default,{selectedButton:function selectedButton(typeId){return _this2.selectedTypeButton(typeId);}})),
 
@@ -74195,7 +74196,8 @@ _react2.default.createElement(_reactNative.View,{style:styles.spaceStyle}),
 _react2.default.createElement(_homeLike2.default,null),
 _react2.default.createElement(_reactNative.View,{style:styles.spaceStyle}),
 _react2.default.createElement(_reactNative.Text,{style:{color:'#D6D6D6',textAlign:'center',paddingTop:10}},'\uFF0D\u731C\u4F60\u559C\u6B22\uFF0D'),
-_react2.default.createElement(_homeList2.default,null)));
+_react2.default.createElement(_homeList2.default,null))));
+
 
 
 }},{key:'selectedTypeButton',value:function selectedTypeButton(
@@ -93792,7 +93794,7 @@ group.slice(4))));
 
 });
 return(
-_react2.default.createElement(_reactNativeSwiper2.default,null,
+_react2.default.createElement(_reactNativeSwiper2.default,{height:220,loop:true,index:0,autoplay:true},
 all));
 
 
@@ -94544,7 +94546,7 @@ var _reactNative=require(42            ); // 42 = react-native
 
 
 var _xmlParser=require(415                 );var _xmlParser2=babelHelpers.interopRequireDefault(_xmlParser); // 415 = ../Model/xmlParser
-var placeholder=require(446                         );var // 446 = ../../icon/placeHolder.png
+var placeholder=require(434                         );var // 434 = ../../icon/placeHolder.png
 
 HomeList=function(_Component){babelHelpers.inherits(HomeList,_Component);
 function HomeList(props){babelHelpers.classCallCheck(this,HomeList);var _this=babelHelpers.possibleConstructorReturn(this,(HomeList.__proto__||Object.getPrototypeOf(HomeList)).call(this,
@@ -94645,7 +94647,7 @@ alignItems:'center'}});exports.default=
 HomeList;
 }, 433, null, "MeGroup/components/Home/homeList.js");
 __d(/* MeGroup/icon/placeHolder.png */function(global, require, module, exports) {module.exports = require(172                                         ).registerAsset({"__packager_asset":true,"httpServerLocation":"/assets/icon","width":358,"height":316,"scales":[1],"hash":"e21347aa6878ff8351afcf53d242b5a7","name":"placeHolder","type":"png"}); // 172 = react-native/Libraries/Image/AssetRegistry
-}, 446, null, "MeGroup/icon/placeHolder.png");
+}, 434, null, "MeGroup/icon/placeHolder.png");
 __d(/* MeGroup/components/navigationView.js */function(global, require, module, exports) {Object.defineProperty(exports,"__esModule",{value:true});var _react=require(12     );var _react2=babelHelpers.interopRequireDefault(_react); // 12 = react
 var _reactNative=require(42            ); // 42 = react-native
 
@@ -94656,9 +94658,9 @@ var _reactNative=require(42            ); // 42 = react-native
 
 
 
-var _nearby=require(435              );var _nearby2=babelHelpers.interopRequireDefault(_nearby); // 435 = ./NearBy/nearby
+var _nearby=require(436              );var _nearby2=babelHelpers.interopRequireDefault(_nearby); // 436 = ./NearBy/nearby
 var _city=require(413                     );var _city2=babelHelpers.interopRequireDefault(_city); // 413 = ./Home/CitySelect/city
-var _searchView=require(444                  );var _searchView2=babelHelpers.interopRequireDefault(_searchView);var // 444 = ./Search/searchView
+var _searchView=require(437                  );var _searchView2=babelHelpers.interopRequireDefault(_searchView);var // 437 = ./Search/searchView
 
 Navigation=function(_Component){babelHelpers.inherits(Navigation,_Component);function Navigation(){babelHelpers.classCallCheck(this,Navigation);return babelHelpers.possibleConstructorReturn(this,(Navigation.__proto__||Object.getPrototypeOf(Navigation)).apply(this,arguments));}babelHelpers.createClass(Navigation,[{key:'render',value:function render()
 {var _this2=this;
@@ -94666,17 +94668,17 @@ return(
 _react2.default.createElement(_reactNative.View,{style:[styles.navigation]},
 _react2.default.createElement(_reactNative.TouchableOpacity,{style:[styles.headerNav],onPress:function onPress(){return _this2._search(_city2.default,'Bottom');}},
 _react2.default.createElement(_reactNative.Text,{style:[styles.whiteText]},'\u897F\u5B89'),
-_react2.default.createElement(_reactNative.Image,{source:require(437                           ),style:[styles.arrowDown]})), // 437 = ../icon/angle-arrow-down.png
+_react2.default.createElement(_reactNative.Image,{source:require(440                           ),style:[styles.arrowDown]})), // 440 = ../icon/angle-arrow-down.png
 
 _react2.default.createElement(_reactNative.TouchableOpacity,{style:[styles.headerSearch],onPress:function onPress(){return _this2._search(_searchView2.default,'Bottom');}},
 _react2.default.createElement(_reactNative.View,{style:[styles.headerSearchDiv]},
-_react2.default.createElement(_reactNative.Image,{source:require(438                 ),style:[styles.searchIcon]}), // 438 = ../icon/search.png
+_react2.default.createElement(_reactNative.Image,{source:require(439                 ),style:[styles.searchIcon]}), // 439 = ../icon/search.png
 _react2.default.createElement(_reactNative.Text,{style:[styles.placeholder]},'\u81EA\u52A9\u9910'))),
 
 
 _react2.default.createElement(_reactNative.View,{style:[styles.headerNav]},
-_react2.default.createElement(_reactNative.Image,{source:require(439                  ),style:[styles.qrCodeAndNotification]}), // 439 = ../icon/qr-code.png
-_react2.default.createElement(_reactNative.Image,{source:require(440                       ),style:[styles.qrCodeAndNotification]})))); // 440 = ../icon/notification.png
+_react2.default.createElement(_reactNative.Image,{source:require(441                  ),style:[styles.qrCodeAndNotification]}), // 441 = ../icon/qr-code.png
+_react2.default.createElement(_reactNative.Image,{source:require(442                       ),style:[styles.qrCodeAndNotification]})))); // 442 = ../icon/notification.png
 
 
 
@@ -94738,7 +94740,7 @@ tintColor:'gray'},
 
 placeholder:{
 color:'gray'}});
-}, 434, null, "MeGroup/components/navigationView.js");
+}, 435, null, "MeGroup/components/navigationView.js");
 __d(/* MeGroup/components/NearBy/nearby.js */function(global, require, module, exports) {Object.defineProperty(exports,"__esModule",{value:true});var _react=require(12     );var _react2=babelHelpers.interopRequireDefault(_react); // 12 = react
 var _reactNative=require(42            ); // 42 = react-native
 var _TabbarView=require(403            );var _TabbarView2=babelHelpers.interopRequireDefault(_TabbarView);var // 403 = ../TabbarView
@@ -94762,12 +94764,22 @@ backgroundColor:'#F5FCFF'}});exports.default=
 
 
 Nearby;
-}, 435, null, "MeGroup/components/NearBy/nearby.js");
+}, 436, null, "MeGroup/components/NearBy/nearby.js");
 __d(/* MeGroup/components/Search/searchView.js */function(global, require, module, exports) {Object.defineProperty(exports,"__esModule",{value:true});var _react=require(12     );var _react2=babelHelpers.interopRequireDefault(_react); // 12 = react
 var _reactNative=require(42            ); // 42 = react-native
-var _searchBar=require(445          );var _searchBar2=babelHelpers.interopRequireDefault(_searchBar); // 445 = ./searchBar
 
-var STORAGE_KEY='@SearchHistory:key';var
+
+
+
+
+
+
+
+
+
+
+var STOREHISTORY_KEY='@SearchHistory:key';
+var STORELIST_KEY='@SearchList:key';var
 
 SearchView=function(_Component){babelHelpers.inherits(SearchView,_Component);
 function SearchView(props){var _this2=this;babelHelpers.classCallCheck(this,SearchView);var _this=babelHelpers.possibleConstructorReturn(this,(SearchView.__proto__||Object.getPrototypeOf(SearchView)).call(this,
@@ -94789,64 +94801,68 @@ props));_this.
 
 
 
-_loadInitialHistory=function _callee(){var value;return regeneratorRuntime.async(function _callee$(_context){while(1){switch(_context.prev=_context.next){case 0:_context.prev=0;_context.next=3;return regeneratorRuntime.awrap(
-
-_reactNative.AsyncStorage.getItem(STORAGE_KEY));case 3:value=_context.sent;
-_this.setState({history:value});_context.next=9;break;case 7:_context.prev=7;_context.t0=_context['catch'](0);case 9:case'end':return _context.stop();}}},null,_this2,[[0,7]]);};_this.state={history:'youyou'};return _this;}babelHelpers.createClass(SearchView,[{key:'render',value:function render(){return _react2.default.createElement(_reactNative.View,{style:[styles.container]},_react2.default.createElement(_searchBar2.default,{navigator:this.props.navigator}));}},{key:'componentDidMount',value:function componentDidMount(){this._loadInitialHistory().done();}}]);return SearchView;}(_react.Component);
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+_storeInitialSearchList=function _callee(){var listString;return regeneratorRuntime.async(function _callee$(_context){while(1){switch(_context.prev=_context.next){case 0:
+listString=JSON.stringify([{'name':'火锅','count':'12'},
+{'name':'火吧','count':'3'},
+{'name':'火焰山','count':'1'},
+{'name':'自助','count':'120'},
+{'name':'自助烧烤','count':'54'},
+{'name':'自助餐','count':'110'}]);_context.prev=1;_context.next=4;return regeneratorRuntime.awrap(
+
+
+_reactNative.AsyncStorage.setItem(STORELIST_KEY,listString));case 4:_context.next=9;break;case 6:_context.prev=6;_context.t0=_context['catch'](1);
+
+_this.setState({list:listString});case 9:case'end':return _context.stop();}}},null,_this2,[[1,6]]);};_this.
+
+
+
+_loadInitialSearchList=function _callee2(){var listString;return regeneratorRuntime.async(function _callee2$(_context2){while(1){switch(_context2.prev=_context2.next){case 0:_context2.prev=0;_context2.next=3;return regeneratorRuntime.awrap(
+
+_reactNative.AsyncStorage.getItem(STORELIST_KEY));case 3:listString=_context2.sent;
+_this.setState({list:JSON.parse(listString)});_context2.next=10;break;case 7:_context2.prev=7;_context2.t0=_context2['catch'](0);
+
+console.log(_context2.t0);case 10:case'end':return _context2.stop();}}},null,_this2,[[0,7]]);};_this.
+
+
+
+_loadInitialHistory=function _callee3(){var value;return regeneratorRuntime.async(function _callee3$(_context3){while(1){switch(_context3.prev=_context3.next){case 0:_context3.prev=0;_context3.next=3;return regeneratorRuntime.awrap(
+
+_reactNative.AsyncStorage.getItem(STOREHISTORY_KEY));case 3:value=_context3.sent;
+_this.setState({history:value});_context3.next=10;break;case 7:_context3.prev=7;_context3.t0=_context3['catch'](0);
+
+console.log(_context3.t0);case 10:case'end':return _context3.stop();}}},null,_this2,[[0,7]]);};_this.state={list:[{}],history:'youyou'};return _this;}babelHelpers.createClass(SearchView,[{key:'render',value:function render(){var _this3=this;return _react2.default.createElement(_reactNative.View,{style:[styles.container]},_react2.default.createElement(_reactNative.View,null,_react2.default.createElement(_reactNative.StatusBar,{barStyle:'default'}),_react2.default.createElement(_reactNative.View,{style:[styles.nav]},_react2.default.createElement(_reactNative.View,{style:[styles.search]},_react2.default.createElement(_reactNative.Image,{source:require(439                    ),style:[styles.searchIcon]}),_react2.default.createElement(_reactNative.TextInput,{placeholder:this.state.list[0].name,style:[styles.searchTextInput]})),_react2.default.createElement(_reactNative.TouchableOpacity,{onPress:function onPress(){return _this3.onBack();}},_react2.default.createElement(_reactNative.Text,{style:[styles.cancel]},'\u53D6\u6D88')))),_react2.default.createElement(_reactNative.ListView,{dataSource:this.state.list,renderRow:function renderRow(rowData){return _react2.default.createElement(_reactNative.Text,null,rowData.name,' ',rowData.count);}}));}},{key:'componentDidMount',value:function componentDidMount(){this._storeInitialSearchList().done;this._loadInitialSearchList().done;this._loadInitialHistory().done();}},{key:'onBack',value:function onBack() // 439 = ../../icon/search.png
+
+
+
+{
+this.props.navigator.pop();
+}}]);return SearchView;}(_react.Component);
 
 
 var styles=_reactNative.StyleSheet.create({
 container:{
 backgroundColor:"white",
-flex:1}});exports.default=
+flex:1},
 
-
-
-SearchView;
-}, 444, null, "MeGroup/components/Search/searchView.js");
-__d(/* MeGroup/components/Search/searchBar.js */function(global, require, module, exports) {Object.defineProperty(exports,"__esModule",{value:true});var _react=require(12     );var _react2=babelHelpers.interopRequireDefault(_react); // 12 = react
-var _reactNative=require(42            );var // 42 = react-native
-
-
-
-
-
-
-
-
-
-SearchBar=function(_Component){babelHelpers.inherits(SearchBar,_Component);
-function SearchBar(props){babelHelpers.classCallCheck(this,SearchBar);return babelHelpers.possibleConstructorReturn(this,(SearchBar.__proto__||Object.getPrototypeOf(SearchBar)).call(this,
-props));
-}babelHelpers.createClass(SearchBar,[{key:'render',value:function render()
-
-{var _this2=this;
-return(
-_react2.default.createElement(_reactNative.View,null,
-_react2.default.createElement(_reactNative.StatusBar,{barStyle:'default'}),
-_react2.default.createElement(_reactNative.View,{style:[styles.nav]},
-_react2.default.createElement(_reactNative.View,{style:[styles.search]},
-_react2.default.createElement(_reactNative.Image,{source:require(438                    ),style:[styles.searchIcon]}), // 438 = ../../icon/search.png
-_react2.default.createElement(_reactNative.TextInput,{placeholder:'\u81EA\u52A9\u9910',style:[styles.searchTextInput]})),
-
-_react2.default.createElement(_reactNative.TouchableOpacity,{onPress:function onPress(){return _this2.onBack();}},
-_react2.default.createElement(_reactNative.Text,{style:[styles.cancel]},'\u53D6\u6D88')))));
-
-
-
-
-
-}},{key:'onBack',value:function onBack()
-
-{
-this.props.navigator.pop();
-}}]);return SearchBar;}(_react.Component);
-
-
-var styles=_reactNative.StyleSheet.create({
 nav:{
 paddingTop:20,
 height:42,
@@ -94881,16 +94897,16 @@ color:'#21C0AD'}});exports.default=
 
 
 
-SearchBar;
-}, 445, null, "MeGroup/components/Search/searchBar.js");
+SearchView;
+}, 437, null, "MeGroup/components/Search/searchView.js");
 __d(/* MeGroup/icon/search.png */function(global, require, module, exports) {module.exports = require(172                                         ).registerAsset({"__packager_asset":true,"httpServerLocation":"/assets/icon","width":32,"height":32,"scales":[1],"hash":"d9f1bb9262e8c2a2699083e93bc09386","name":"search","type":"png"}); // 172 = react-native/Libraries/Image/AssetRegistry
-}, 438, null, "MeGroup/icon/search.png");
+}, 439, null, "MeGroup/icon/search.png");
 __d(/* MeGroup/icon/angle-arrow-down.png */function(global, require, module, exports) {module.exports = require(172                                         ).registerAsset({"__packager_asset":true,"httpServerLocation":"/assets/icon","width":32,"height":32,"scales":[1],"hash":"441c17f57117c67753081bf8b77b073e","name":"angle-arrow-down","type":"png"}); // 172 = react-native/Libraries/Image/AssetRegistry
-}, 437, null, "MeGroup/icon/angle-arrow-down.png");
+}, 440, null, "MeGroup/icon/angle-arrow-down.png");
 __d(/* MeGroup/icon/qr-code.png */function(global, require, module, exports) {module.exports = require(172                                         ).registerAsset({"__packager_asset":true,"httpServerLocation":"/assets/icon","width":32,"height":32,"scales":[1],"hash":"3866c5640b38badd49c6a78923bf7dfd","name":"qr-code","type":"png"}); // 172 = react-native/Libraries/Image/AssetRegistry
-}, 439, null, "MeGroup/icon/qr-code.png");
+}, 441, null, "MeGroup/icon/qr-code.png");
 __d(/* MeGroup/icon/notification.png */function(global, require, module, exports) {module.exports = require(172                                         ).registerAsset({"__packager_asset":true,"httpServerLocation":"/assets/icon","width":32,"height":32,"scales":[1],"hash":"a1a3813278900828cf9a2dddcc1a5d94","name":"notification","type":"png"}); // 172 = react-native/Libraries/Image/AssetRegistry
-}, 440, null, "MeGroup/icon/notification.png");
+}, 442, null, "MeGroup/icon/notification.png");
 __d(/* MeGroup/components/default.js */function(global, require, module, exports) {Object.defineProperty(exports,"__esModule",{value:true});var _react=require(12     );var _react2=babelHelpers.interopRequireDefault(_react); // 12 = react
 var _reactNative=require(42            ); // 42 = react-native
 
@@ -94920,7 +94936,7 @@ this.props.navigator.pop();
 
 
 Default;
-}, 441, null, "MeGroup/components/default.js");
+}, 443, null, "MeGroup/components/default.js");
 __d(/* MeGroup/components/Mine/mine.js */function(global, require, module, exports) {Object.defineProperty(exports,"__esModule",{value:true});var _react=require(12     );var _react2=babelHelpers.interopRequireDefault(_react); // 12 = react
 var _reactNative=require(42            );var // 42 = react-native
 
@@ -94939,9 +94955,9 @@ backgroundColor:"#FFC0CB"}});exports.default=
 
 
 Mine;
-}, 442, null, "MeGroup/components/Mine/mine.js");
+}, 444, null, "MeGroup/components/Mine/mine.js");
 __d(/* MeGroup/icon/home.png */function(global, require, module, exports) {module.exports = require(172                                         ).registerAsset({"__packager_asset":true,"httpServerLocation":"/assets/icon","width":24,"height":24,"scales":[1],"hash":"b271500b1c49c034ddb6a0207349be18","name":"home","type":"png"}); // 172 = react-native/Libraries/Image/AssetRegistry
-}, 443, null, "MeGroup/icon/home.png");
+}, 445, null, "MeGroup/icon/home.png");
 ;require(216);
 ;require(0);
 //# sourceMappingURL=index.ios.map
