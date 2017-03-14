@@ -14,6 +14,7 @@ import {
     ActivityIndicator
 } from "react-native";
 import XmlParser from '../Model/xmlParser';
+const placeholder = require('../../icon/placeHolder.png')
 
 class HomeList extends Component {
     constructor(props) {
@@ -39,21 +40,20 @@ class HomeList extends Component {
     }
 
     fetchData() {
-        // fetch('http://api.union.meituan.com/data/api?city=%E8%A5%BF%E5%AE%89&category=%E7%BE%8E%E9%A3%9F&limit=40')
-        //     .then((response) => response.text())
-        //     .then((responseData) => {
-        //         var result = new XmlParser().parseXmlText(responseData);
-        //         var likeData = result.response.deals.data;
-        //         console.log('betta   ' + JSON.stringify(likeData))
-        //         this.setState({
-        //             dataSource: this.state.dataSource.cloneWithRows(likeData),
-        //             loaded: true,
-        //         });
-        //     })
-        //     .catch((error) => {
-        //         console.error(error)
-        //     })
-        //     .done();
+        fetch('http://api.meituan.com/group/v1/recommend/homepage/city/1')
+            .then((response) => response.json())
+            .then((responseData) => {
+                var likeData = responseData.data;
+                console.log('betta   ' + JSON.stringify(likeData))
+                this.setState({
+                    dataSource: this.state.dataSource.cloneWithRows(likeData),
+                    loaded: true,
+                });
+            })
+            .catch((error) => {
+                console.error(error)
+            })
+            .done();
     }
     setListView() {
         return (
@@ -66,12 +66,13 @@ class HomeList extends Component {
         )
     }
     renderCell(rowData, sectionID, rowID, highlighRow) {
-        console.log('betta' + rowData.deal.deal_img);
         return (
             <View style={styles.cellStyle}>
-                <Image source={{ uri: rowData.deal.deal_img.text }} style={{ marginLeft: 10, width: 80, height: 80, backgroundColor: '#FFE1FF' }} />
-                <View style={{ marginLeft:10 ,marginRight: 100 }}>
-                    <Text style={{ marginTop: 10 }} >炝锅鱼套餐，建议2-3人使用，提供免费WiFi,炝锅鱼套餐，建议2-3人使用，提供免费WiFi</Text>
+                <Image source={{ uri: rowData.imgurl }} defaultSource = {placeholder} style={{ marginLeft: 10, width: 80, height: 80, backgroundColor: '#FFE1FF' }} />
+                <View style={{ marginLeft: 10, marginRight: 100, marginTop: 10, marginBottom: 10, justifyContent: 'space-between' }}>
+                    <Text style={{ fontSize: 15 }} >{rowData.mname}</Text>
+                    <Text style={{ color: '#969696', fontSize: 12 }} >{rowData.mtitle}</Text>
+                    <Text style={{ color: 'red', fontSize: 15 }} >￥{rowData.price}</Text>
                 </View>
             </View>
         );
