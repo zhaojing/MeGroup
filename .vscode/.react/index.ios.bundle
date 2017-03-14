@@ -68646,8 +68646,8 @@ __d(/* MeGroup/components/TabbarView.js */function(global, require, module, expo
 var _reactNative=require(42            ); // 42 = react-native
 var _reactNativeTabNavigator=require(404                         );var _reactNativeTabNavigator2=babelHelpers.interopRequireDefault(_reactNativeTabNavigator); // 404 = react-native-tab-navigator
 var _home=require(412          );var _home2=babelHelpers.interopRequireDefault(_home); // 412 = ./Home/home
-var _mine=require(439          );var _mine2=babelHelpers.interopRequireDefault(_mine); // 439 = ./Mine/mine
-var _nearby=require(440              );var _nearby2=babelHelpers.interopRequireDefault(_nearby);var // 440 = ./NearBy/nearby
+var _mine=require(442          );var _mine2=babelHelpers.interopRequireDefault(_mine); // 442 = ./Mine/mine
+var _nearby=require(435              );var _nearby2=babelHelpers.interopRequireDefault(_nearby);var // 435 = ./NearBy/nearby
 
 TabbarView=function(_Component){babelHelpers.inherits(TabbarView,_Component);
 function TabbarView(props){babelHelpers.classCallCheck(this,TabbarView);var _this=babelHelpers.possibleConstructorReturn(this,(TabbarView.__proto__||Object.getPrototypeOf(TabbarView)).call(this,
@@ -68667,7 +68667,7 @@ _react2.default.createElement(_reactNativeTabNavigator2.default.Item,{
 selected:this.state.selectedTab==='首页',
 title:'\u9996\u9875',
 titleStyle:styles.tabText,
-renderIcon:function renderIcon(){return _react2.default.createElement(_reactNative.Image,{source:require(441               )});}, // 441 = ../icon/home.png
+renderIcon:function renderIcon(){return _react2.default.createElement(_reactNative.Image,{source:require(443               )});}, // 443 = ../icon/home.png
 selectedTitleStyle:styles.selectedTabText,
 onPress:function onPress(){return _this2.setState({selectedTab:'首页'});}},
 _react2.default.createElement(_home2.default,{navigator:this.props.navigator})),
@@ -74176,11 +74176,11 @@ style:[child.props.style,this.props.style]});
 __d(/* MeGroup/components/Home/home.js */function(global, require, module, exports) {Object.defineProperty(exports,"__esModule",{value:true});var _react=require(12     );var _react2=babelHelpers.interopRequireDefault(_react); // 12 = react
 var _reactNative=require(42            ); // 42 = react-native
 var _city=require(413                );var _city2=babelHelpers.interopRequireDefault(_city); // 413 = ./CitySelect/city
-var _homeType=require(420         );var _homeType2=babelHelpers.interopRequireDefault(_homeType); // 420 = ./homeType
-var _homeLike=require(431         );var _homeLike2=babelHelpers.interopRequireDefault(_homeLike); // 431 = ./homeLike
-var _homeList=require(432         );var _homeList2=babelHelpers.interopRequireDefault(_homeList); // 432 = ./homeList
-var _navigationView=require(433                );var _navigationView2=babelHelpers.interopRequireDefault(_navigationView); // 433 = ../navigationView
-var _default=require(438         );var _default2=babelHelpers.interopRequireDefault(_default);var // 438 = ../default
+var _homeType=require(421         );var _homeType2=babelHelpers.interopRequireDefault(_homeType); // 421 = ./homeType
+var _homeLike=require(432         );var _homeLike2=babelHelpers.interopRequireDefault(_homeLike); // 432 = ./homeLike
+var _homeList=require(433         );var _homeList2=babelHelpers.interopRequireDefault(_homeList); // 433 = ./homeList
+var _navigationView=require(434                );var _navigationView2=babelHelpers.interopRequireDefault(_navigationView); // 434 = ../navigationView
+var _default=require(441         );var _default2=babelHelpers.interopRequireDefault(_default);var // 441 = ../default
 
 Home=function(_Component){babelHelpers.inherits(Home,_Component);function Home(){babelHelpers.classCallCheck(this,Home);return babelHelpers.possibleConstructorReturn(this,(Home.__proto__||Object.getPrototypeOf(Home)).apply(this,arguments));}babelHelpers.createClass(Home,[{key:'render',value:function render()
 {var _this2=this;
@@ -74380,7 +74380,7 @@ _react2.default.createElement(_reactNative.View,{style:styles.sectionStyle},
 _react2.default.createElement(_reactNative.Text,null,sectionID)));
 
 
-};_this.state={dataSource:new _reactNative.ListView.DataSource({rowHasChanged:function rowHasChanged(row1,row2){return row1!==row2;},sectionHeaderHasChanged:function sectionHeaderHasChanged(s1,s2){return s1!==s2;}}),loaded:false};return _this;}babelHelpers.createClass(City,[{key:'render',value:function render(){var _this2=this;if(!this.state.loaded){return _react2.default.createElement(_reactNative.View,null,this.renderLoadingView());}return _react2.default.createElement(_reactNative.View,{style:styles.container},_react2.default.createElement(_reactNative.StatusBar,{barStyle:'default'}),_react2.default.createElement(_reactNative.TouchableOpacity,{onPress:function onPress(){return _this2.onBack();},style:[styles.cancelView]},_react2.default.createElement(_reactNative.Image,{source:require(442                       ),style:[styles.cancelImage]})),this.setListView());}},{key:'componentDidMount',value:function componentDidMount(){this.fetchData();}},{key:'fetchData',value:function fetchData(){var _this3=this;fetch('http://www.meituan.com/api/v1/divisions').then(function(response){return response.text();}).then(function(responseData){var result=new _xmlParser2.default().parseXmlText(responseData);var nameList=result.response.divisions.division;nameList.sort(function(a,b){return a.id.text.localeCompare(b.id.text);});var groupNameList=_lodash2.default.groupBy(nameList,function(x){return x.id.text[0];});_this3.setState({dataSource:_this3.state.dataSource.cloneWithRowsAndSections(groupNameList),loaded:true});}).catch(function(error){console.error(error);}).done();}},{key:'setListView',value:function setListView(){return _react2.default.createElement(_reactNative.View,null,_react2.default.createElement(_reactNative.ListView,{dataSource:this.state.dataSource,renderRow:this.renderCell,renderSectionHeader:this.renderSectionHeader}));}},{key:'onBack',value:function onBack(){this.props.navigator.pop();}},{key:'renderLoadingView',value:function renderLoadingView(){return _react2.default.createElement(_reactNative.View,null,_react2.default.createElement(_reactNative.ActivityIndicator,{animating:!this.state.loaded,style:[styles.centering,{height:80}],size:'large'}));}},{key:'renderCell',value:function renderCell(rowData,sectionID,rowID,highlighRow){return _react2.default.createElement(_reactNative.View,{style:styles.cellStyle},_react2.default.createElement(_reactNative.Text,null,rowData.name.text));}}]);return City;}(_react.Component); // 442 = ../../../icon/cancel.png
+};_this.state={dataSource:new _reactNative.ListView.DataSource({rowHasChanged:function rowHasChanged(row1,row2){return row1!==row2;},sectionHeaderHasChanged:function sectionHeaderHasChanged(s1,s2){return s1!==s2;}}),loaded:false};return _this;}babelHelpers.createClass(City,[{key:'render',value:function render(){var _this2=this;if(!this.state.loaded){return _react2.default.createElement(_reactNative.View,null,this.renderLoadingView());}return _react2.default.createElement(_reactNative.View,{style:styles.container},_react2.default.createElement(_reactNative.StatusBar,{barStyle:'default'}),_react2.default.createElement(_reactNative.TouchableOpacity,{onPress:function onPress(){return _this2.onBack();},style:[styles.cancelView]},_react2.default.createElement(_reactNative.Image,{source:require(420                       ),style:[styles.cancelImage]})),this.setListView());}},{key:'componentDidMount',value:function componentDidMount(){this.fetchData();}},{key:'fetchData',value:function fetchData(){var _this3=this;fetch('http://www.meituan.com/api/v1/divisions').then(function(response){return response.text();}).then(function(responseData){var result=new _xmlParser2.default().parseXmlText(responseData);var nameList=result.response.divisions.division;nameList.sort(function(a,b){return a.id.text.localeCompare(b.id.text);});var groupNameList=_lodash2.default.groupBy(nameList,function(x){return x.id.text[0];});_this3.setState({dataSource:_this3.state.dataSource.cloneWithRowsAndSections(groupNameList),loaded:true});}).catch(function(error){console.error(error);}).done();}},{key:'setListView',value:function setListView(){return _react2.default.createElement(_reactNative.View,null,_react2.default.createElement(_reactNative.ListView,{dataSource:this.state.dataSource,renderRow:this.renderCell,renderSectionHeader:this.renderSectionHeader}));}},{key:'onBack',value:function onBack(){this.props.navigator.pop();}},{key:'renderLoadingView',value:function renderLoadingView(){return _react2.default.createElement(_reactNative.View,null,_react2.default.createElement(_reactNative.ActivityIndicator,{animating:!this.state.loaded,style:[styles.centering,{height:80}],size:'large'}));}},{key:'renderCell',value:function renderCell(rowData,sectionID,rowID,highlighRow){return _react2.default.createElement(_reactNative.View,{style:styles.cellStyle},_react2.default.createElement(_reactNative.Text,null,rowData.name.text));}}]);return City;}(_react.Component); // 420 = ../../../icon/cancel.png
 
 
 var styles=_reactNative.StyleSheet.create({
@@ -93731,36 +93731,36 @@ alignItems:'center'}});exports.default=
 NavBarStyle;
 }, 419, null, "MeGroup/components/Views/navBarStyle.js");
 __d(/* MeGroup/icon/cancel.png */function(global, require, module, exports) {module.exports = require(172                                         ).registerAsset({"__packager_asset":true,"httpServerLocation":"/assets/icon","width":32,"height":32,"scales":[1],"hash":"41e57492a233866b5af430f0e763a4f4","name":"cancel","type":"png"}); // 172 = react-native/Libraries/Image/AssetRegistry
-}, 442, null, "MeGroup/icon/cancel.png");
+}, 420, null, "MeGroup/icon/cancel.png");
 __d(/* MeGroup/components/Home/homeType.js */function(global, require, module, exports) {Object.defineProperty(exports,"__esModule",{value:true});
 var _react=require(12     );var _react2=babelHelpers.interopRequireDefault(_react); // 12 = react
 var _reactNative=require(42            ); // 42 = react-native
-var _reactNativeSwiper=require(421                  );var _reactNativeSwiper2=babelHelpers.interopRequireDefault(_reactNativeSwiper);var // 421 = react-native-swiper
+var _reactNativeSwiper=require(422                  );var _reactNativeSwiper2=babelHelpers.interopRequireDefault(_reactNativeSwiper);var // 422 = react-native-swiper
 
 HomeType=function(_Component){babelHelpers.inherits(HomeType,_Component);
 function HomeType(props){babelHelpers.classCallCheck(this,HomeType);var _this=babelHelpers.possibleConstructorReturn(this,(HomeType.__proto__||Object.getPrototypeOf(HomeType)).call(this,
 props));
 _this.state={
-imageProps:{name:'美食',icon:require(423                     )}, // 423 = ../../images/type1.png
+imageProps:{name:'美食',icon:require(424                     )}, // 424 = ../../images/type1.png
 all:[[
-{id:'food',name:'美食',icon:require(423                     )}, // 423 = ../../images/type1.png
-{id:'movie',name:'电影',icon:require(424                     )}, // 424 = ../../images/type2.png
-{id:'hotel',name:'酒店',icon:require(425                     )}, // 425 = ../../images/type3.png
-{id:'KTV',name:'KTV',icon:require(426                     )}, // 426 = ../../images/type4.png
-{id:'list',name:'新日新单',icon:require(427                     )}, // 427 = ../../images/type5.png
-{id:'coupon',name:'代金券',icon:require(428                     )}, // 428 = ../../images/type6.png
-{id:'travel',name:'周边游',icon:require(429                     )}, // 429 = ../../images/type7.png
-{id:'cake',name:'蛋糕甜点',icon:require(430                     )}], // 430 = ../../images/type8.png
+{id:'food',name:'美食',icon:require(424                     )}, // 424 = ../../images/type1.png
+{id:'movie',name:'电影',icon:require(425                     )}, // 425 = ../../images/type2.png
+{id:'hotel',name:'酒店',icon:require(426                     )}, // 426 = ../../images/type3.png
+{id:'KTV',name:'KTV',icon:require(427                     )}, // 427 = ../../images/type4.png
+{id:'list',name:'新日新单',icon:require(428                     )}, // 428 = ../../images/type5.png
+{id:'coupon',name:'代金券',icon:require(429                     )}, // 429 = ../../images/type6.png
+{id:'travel',name:'周边游',icon:require(430                     )}, // 430 = ../../images/type7.png
+{id:'cake',name:'蛋糕甜点',icon:require(431                     )}], // 431 = ../../images/type8.png
 
 [
-{id:'highHotel',name:'高端酒店',icon:require(423                     )}, // 423 = ../../images/type1.png
-{id:'exercise',name:'运动健身',icon:require(424                     )}, // 424 = ../../images/type2.png
-{id:'life',name:'生活服务',icon:require(425                     )}, // 425 = ../../images/type3.png
-{id:'',name:'母婴亲子',icon:require(426                     )}, // 426 = ../../images/type4.png
-{id:'marry',name:'结婚',icon:require(427                     )}, // 427 = ../../images/type5.png
-{id:'scenic',name:'景点',icon:require(428                     )}, // 428 = ../../images/type6.png
-{id:'spring',name:'温泉',icon:require(429                     )}, // 429 = ../../images/type7.png
-{id:'',name:'学习培训',icon:require(430                     )}]]};return _this; // 430 = ../../images/type8.png
+{id:'highHotel',name:'高端酒店',icon:require(424                     )}, // 424 = ../../images/type1.png
+{id:'exercise',name:'运动健身',icon:require(425                     )}, // 425 = ../../images/type2.png
+{id:'life',name:'生活服务',icon:require(426                     )}, // 426 = ../../images/type3.png
+{id:'',name:'母婴亲子',icon:require(427                     )}, // 427 = ../../images/type4.png
+{id:'marry',name:'结婚',icon:require(428                     )}, // 428 = ../../images/type5.png
+{id:'scenic',name:'景点',icon:require(429                     )}, // 429 = ../../images/type6.png
+{id:'spring',name:'温泉',icon:require(430                     )}, // 430 = ../../images/type7.png
+{id:'',name:'学习培训',icon:require(431                     )}]]};return _this; // 431 = ../../images/type8.png
 
 
 }babelHelpers.createClass(HomeType,[{key:'butonSelect',value:function butonSelect(
@@ -93808,10 +93808,10 @@ icon:{justifyContent:'center',width:50,height:50}});exports.default=
 
 
 HomeType;
-}, 420, null, "MeGroup/components/Home/homeType.js");
-__d(/* react-native-swiper/index.js */function(global, require, module, exports) {var _src=require(422     );var _src2=babelHelpers.interopRequireDefault(_src); // 422 = ./src/
+}, 421, null, "MeGroup/components/Home/homeType.js");
+__d(/* react-native-swiper/index.js */function(global, require, module, exports) {var _src=require(423     );var _src2=babelHelpers.interopRequireDefault(_src); // 423 = ./src/
 module.exports=_src2.default;
-}, 421, null, "react-native-swiper/index.js");
+}, 422, null, "react-native-swiper/index.js");
 __d(/* react-native-swiper/src/index.js */function(global, require, module, exports) {Object.defineProperty(exports,"__esModule",{value:true});
 
 
@@ -94452,23 +94452,23 @@ this.props.showsButtons&&this.renderButtons()));
 
 
 }}]);return _class;}(_react.Component);_class.propTypes={horizontal:_react.PropTypes.bool,children:_react.PropTypes.node.isRequired,style:_reactNative.View.propTypes.style,pagingEnabled:_react.PropTypes.bool,showsHorizontalScrollIndicator:_react.PropTypes.bool,showsVerticalScrollIndicator:_react.PropTypes.bool,bounces:_react.PropTypes.bool,scrollsToTop:_react.PropTypes.bool,removeClippedSubviews:_react.PropTypes.bool,automaticallyAdjustContentInsets:_react.PropTypes.bool,showsPagination:_react.PropTypes.bool,showsButtons:_react.PropTypes.bool,loadMinimal:_react.PropTypes.bool,loadMinimalSize:_react.PropTypes.number,loadMinimalLoader:_react.PropTypes.element,loop:_react.PropTypes.bool,autoplay:_react.PropTypes.bool,autoplayTimeout:_react.PropTypes.number,autoplayDirection:_react.PropTypes.bool,index:_react.PropTypes.number,renderPagination:_react.PropTypes.func,dotStyle:_react.PropTypes.object,activeDotStyle:_react.PropTypes.object,dotColor:_react.PropTypes.string,activeDotColor:_react.PropTypes.string};_class.defaultProps={horizontal:true,pagingEnabled:true,showsHorizontalScrollIndicator:false,showsVerticalScrollIndicator:false,bounces:false,scrollsToTop:false,removeClippedSubviews:true,automaticallyAdjustContentInsets:false,showsPagination:true,showsButtons:false,loop:true,loadMinimal:false,loadMinimalSize:1,autoplay:false,autoplayTimeout:2.5,autoplayDirection:true,index:0};exports.default=_class;
-}, 422, null, "react-native-swiper/src/index.js");
+}, 423, null, "react-native-swiper/src/index.js");
 __d(/* MeGroup/images/type1.png */function(global, require, module, exports) {module.exports = require(172                                         ).registerAsset({"__packager_asset":true,"httpServerLocation":"/assets/images","width":133,"height":141,"scales":[1],"hash":"c92f502ca47da3787a7e893e9908dc13","name":"type1","type":"png"}); // 172 = react-native/Libraries/Image/AssetRegistry
-}, 423, null, "MeGroup/images/type1.png");
+}, 424, null, "MeGroup/images/type1.png");
 __d(/* MeGroup/images/type2.png */function(global, require, module, exports) {module.exports = require(172                                         ).registerAsset({"__packager_asset":true,"httpServerLocation":"/assets/images","width":151,"height":143,"scales":[1],"hash":"0573fa4b3ef107f113e46f2a857a00b3","name":"type2","type":"png"}); // 172 = react-native/Libraries/Image/AssetRegistry
-}, 424, null, "MeGroup/images/type2.png");
+}, 425, null, "MeGroup/images/type2.png");
 __d(/* MeGroup/images/type3.png */function(global, require, module, exports) {module.exports = require(172                                         ).registerAsset({"__packager_asset":true,"httpServerLocation":"/assets/images","width":131,"height":142,"scales":[1],"hash":"139f7bc89891b791f9531fa375205a5e","name":"type3","type":"png"}); // 172 = react-native/Libraries/Image/AssetRegistry
-}, 425, null, "MeGroup/images/type3.png");
+}, 426, null, "MeGroup/images/type3.png");
 __d(/* MeGroup/images/type4.png */function(global, require, module, exports) {module.exports = require(172                                         ).registerAsset({"__packager_asset":true,"httpServerLocation":"/assets/images","width":128,"height":142,"scales":[1],"hash":"52ad54b6b6dbfb76d8d7fee796b13faa","name":"type4","type":"png"}); // 172 = react-native/Libraries/Image/AssetRegistry
-}, 426, null, "MeGroup/images/type4.png");
+}, 427, null, "MeGroup/images/type4.png");
 __d(/* MeGroup/images/type5.png */function(global, require, module, exports) {module.exports = require(172                                         ).registerAsset({"__packager_asset":true,"httpServerLocation":"/assets/images","width":163,"height":143,"scales":[1],"hash":"5ec627c9586b84714878a1c8609a02a2","name":"type5","type":"png"}); // 172 = react-native/Libraries/Image/AssetRegistry
-}, 427, null, "MeGroup/images/type5.png");
+}, 428, null, "MeGroup/images/type5.png");
 __d(/* MeGroup/images/type6.png */function(global, require, module, exports) {module.exports = require(172                                         ).registerAsset({"__packager_asset":true,"httpServerLocation":"/assets/images","width":133,"height":124,"scales":[1],"hash":"02b7b721c5e4a3bd67e3240ba111d264","name":"type6","type":"png"}); // 172 = react-native/Libraries/Image/AssetRegistry
-}, 428, null, "MeGroup/images/type6.png");
+}, 429, null, "MeGroup/images/type6.png");
 __d(/* MeGroup/images/type7.png */function(global, require, module, exports) {module.exports = require(172                                         ).registerAsset({"__packager_asset":true,"httpServerLocation":"/assets/images","width":140,"height":124,"scales":[1],"hash":"55a688ce87a6c7f56c1b72cf3f9d7d34","name":"type7","type":"png"}); // 172 = react-native/Libraries/Image/AssetRegistry
-}, 429, null, "MeGroup/images/type7.png");
+}, 430, null, "MeGroup/images/type7.png");
 __d(/* MeGroup/images/type8.png */function(global, require, module, exports) {module.exports = require(172                                         ).registerAsset({"__packager_asset":true,"httpServerLocation":"/assets/images","width":131,"height":124,"scales":[1],"hash":"d29f3adc806ed79eb19753efb825ad30","name":"type8","type":"png"}); // 172 = react-native/Libraries/Image/AssetRegistry
-}, 430, null, "MeGroup/images/type8.png");
+}, 431, null, "MeGroup/images/type8.png");
 __d(/* MeGroup/components/Home/homeLike.js */function(global, require, module, exports) {Object.defineProperty(exports,"__esModule",{value:true});var _react=require(12     );var _react2=babelHelpers.interopRequireDefault(_react); // 12 = react
 var _reactNative=require(42            );var // 42 = react-native
 
@@ -94527,7 +94527,7 @@ block:{flex:1}});exports.default=
 
 
 HomeLike;
-}, 431, null, "MeGroup/components/Home/homeLike.js");
+}, 432, null, "MeGroup/components/Home/homeLike.js");
 __d(/* MeGroup/components/Home/homeList.js */function(global, require, module, exports) {Object.defineProperty(exports,"__esModule",{value:true});var _react=require(12     );var _react2=babelHelpers.interopRequireDefault(_react); // 12 = react
 var _reactNative=require(42            ); // 42 = react-native
 
@@ -94642,7 +94642,7 @@ alignItems:'center'}});exports.default=
 
 
 HomeList;
-}, 432, null, "MeGroup/components/Home/homeList.js");
+}, 433, null, "MeGroup/components/Home/homeList.js");
 __d(/* MeGroup/components/navigationView.js */function(global, require, module, exports) {Object.defineProperty(exports,"__esModule",{value:true});var _react=require(12     );var _react2=babelHelpers.interopRequireDefault(_react); // 12 = react
 var _reactNative=require(42            ); // 42 = react-native
 
@@ -94653,9 +94653,9 @@ var _reactNative=require(42            ); // 42 = react-native
 
 
 
-var _nearby=require(440              );var _nearby2=babelHelpers.interopRequireDefault(_nearby); // 440 = ./NearBy/nearby
+var _nearby=require(435              );var _nearby2=babelHelpers.interopRequireDefault(_nearby); // 435 = ./NearBy/nearby
 var _city=require(413                     );var _city2=babelHelpers.interopRequireDefault(_city); // 413 = ./Home/CitySelect/city
-var _search2=require(443            );var _search3=babelHelpers.interopRequireDefault(_search2);var // 443 = ./Home/search
+var _search2=require(436            );var _search3=babelHelpers.interopRequireDefault(_search2);var // 436 = ./Home/search
 
 Navigation=function(_Component){babelHelpers.inherits(Navigation,_Component);function Navigation(){babelHelpers.classCallCheck(this,Navigation);return babelHelpers.possibleConstructorReturn(this,(Navigation.__proto__||Object.getPrototypeOf(Navigation)).apply(this,arguments));}babelHelpers.createClass(Navigation,[{key:'render',value:function render()
 {var _this2=this;
@@ -94663,17 +94663,17 @@ return(
 _react2.default.createElement(_reactNative.View,{style:[styles.navigation]},
 _react2.default.createElement(_reactNative.TouchableOpacity,{style:[styles.headerNav],onPress:function onPress(){return _this2._search(_city2.default,'Bottom');}},
 _react2.default.createElement(_reactNative.Text,{style:[styles.whiteText]},'\u897F\u5B89'),
-_react2.default.createElement(_reactNative.Image,{source:require(434                           ),style:[styles.arrowDown]})), // 434 = ../icon/angle-arrow-down.png
+_react2.default.createElement(_reactNative.Image,{source:require(437                           ),style:[styles.arrowDown]})), // 437 = ../icon/angle-arrow-down.png
 
 _react2.default.createElement(_reactNative.TouchableOpacity,{style:[styles.headerSearch],onPress:function onPress(){return _this2._search(_search3.default,'Bottom');}},
 _react2.default.createElement(_reactNative.View,{style:[styles.headerSearchDiv]},
-_react2.default.createElement(_reactNative.Image,{source:require(435                 ),style:[styles.searchIcon]}), // 435 = ../icon/search.png
+_react2.default.createElement(_reactNative.Image,{source:require(438                 ),style:[styles.searchIcon]}), // 438 = ../icon/search.png
 _react2.default.createElement(_reactNative.Text,{style:[styles.placeholder]},'\u81EA\u52A9\u9910'))),
 
 
 _react2.default.createElement(_reactNative.View,{style:[styles.headerNav]},
-_react2.default.createElement(_reactNative.Image,{source:require(436                  ),style:[styles.qrCodeAndNotification]}), // 436 = ../icon/qr-code.png
-_react2.default.createElement(_reactNative.Image,{source:require(437                       ),style:[styles.qrCodeAndNotification]})))); // 437 = ../icon/notification.png
+_react2.default.createElement(_reactNative.Image,{source:require(439                  ),style:[styles.qrCodeAndNotification]}), // 439 = ../icon/qr-code.png
+_react2.default.createElement(_reactNative.Image,{source:require(440                       ),style:[styles.qrCodeAndNotification]})))); // 440 = ../icon/notification.png
 
 
 
@@ -94735,7 +94735,7 @@ tintColor:'gray'},
 
 placeholder:{
 color:'gray'}});
-}, 433, null, "MeGroup/components/navigationView.js");
+}, 434, null, "MeGroup/components/navigationView.js");
 __d(/* MeGroup/components/NearBy/nearby.js */function(global, require, module, exports) {Object.defineProperty(exports,"__esModule",{value:true});var _react=require(12     );var _react2=babelHelpers.interopRequireDefault(_react); // 12 = react
 var _reactNative=require(42            ); // 42 = react-native
 var _TabbarView=require(403            );var _TabbarView2=babelHelpers.interopRequireDefault(_TabbarView);var // 403 = ../TabbarView
@@ -94759,32 +94759,54 @@ backgroundColor:'#F5FCFF'}});exports.default=
 
 
 Nearby;
-}, 440, null, "MeGroup/components/NearBy/nearby.js");
+}, 435, null, "MeGroup/components/NearBy/nearby.js");
 __d(/* MeGroup/components/Home/search.js */function(global, require, module, exports) {Object.defineProperty(exports,"__esModule",{value:true});var _react=require(12     );var _react2=babelHelpers.interopRequireDefault(_react); // 12 = react
-var _reactNative=require(42            );var // 42 = react-native
+var _reactNative=require(42            ); // 42 = react-native
 
-Search=function(_Component){babelHelpers.inherits(Search,_Component);function Search(){babelHelpers.classCallCheck(this,Search);return babelHelpers.possibleConstructorReturn(this,(Search.__proto__||Object.getPrototypeOf(Search)).apply(this,arguments));}babelHelpers.createClass(Search,[{key:"render",value:function render()
-{
-return(
-_react2.default.createElement(_reactNative.ScrollView,null,
-_react2.default.createElement(_reactNative.Text,null,"hahahah")));
+var STORAGE_KEY='@SearchHistory:key';var
 
-
+Search=function(_Component){babelHelpers.inherits(Search,_Component);
+function Search(props){var _this2=this;babelHelpers.classCallCheck(this,Search);var _this=babelHelpers.possibleConstructorReturn(this,(Search.__proto__||Object.getPrototypeOf(Search)).call(this,
+props));_this.
 
 
-}}]);return Search;}(_react.Component);exports.default=
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+_loadInitialHistory=function _callee(){return regeneratorRuntime.async(function _callee$(_context){while(1){switch(_context.prev=_context.next){case 0:
+try{
+
+
+_this.setState({history:'value'});
+}catch(error){
+}case 1:case'end':return _context.stop();}}},null,_this2);};_this.state={history:'youyou'};return _this;}babelHelpers.createClass(Search,[{key:'render',value:function render(){return _react2.default.createElement(_reactNative.View,null,_react2.default.createElement(_reactNative.Text,null,this.state.history));}},{key:'componentDidMount',value:function componentDidMount(){this._loadInitialHistory().done();}}]);return Search;}(_react.Component);exports.default=
+
 
 
 Search;
-}, 443, null, "MeGroup/components/Home/search.js");
+}, 436, null, "MeGroup/components/Home/search.js");
 __d(/* MeGroup/icon/angle-arrow-down.png */function(global, require, module, exports) {module.exports = require(172                                         ).registerAsset({"__packager_asset":true,"httpServerLocation":"/assets/icon","width":32,"height":32,"scales":[1],"hash":"441c17f57117c67753081bf8b77b073e","name":"angle-arrow-down","type":"png"}); // 172 = react-native/Libraries/Image/AssetRegistry
-}, 434, null, "MeGroup/icon/angle-arrow-down.png");
+}, 437, null, "MeGroup/icon/angle-arrow-down.png");
 __d(/* MeGroup/icon/search.png */function(global, require, module, exports) {module.exports = require(172                                         ).registerAsset({"__packager_asset":true,"httpServerLocation":"/assets/icon","width":32,"height":32,"scales":[1],"hash":"d9f1bb9262e8c2a2699083e93bc09386","name":"search","type":"png"}); // 172 = react-native/Libraries/Image/AssetRegistry
-}, 435, null, "MeGroup/icon/search.png");
+}, 438, null, "MeGroup/icon/search.png");
 __d(/* MeGroup/icon/qr-code.png */function(global, require, module, exports) {module.exports = require(172                                         ).registerAsset({"__packager_asset":true,"httpServerLocation":"/assets/icon","width":32,"height":32,"scales":[1],"hash":"3866c5640b38badd49c6a78923bf7dfd","name":"qr-code","type":"png"}); // 172 = react-native/Libraries/Image/AssetRegistry
-}, 436, null, "MeGroup/icon/qr-code.png");
+}, 439, null, "MeGroup/icon/qr-code.png");
 __d(/* MeGroup/icon/notification.png */function(global, require, module, exports) {module.exports = require(172                                         ).registerAsset({"__packager_asset":true,"httpServerLocation":"/assets/icon","width":32,"height":32,"scales":[1],"hash":"a1a3813278900828cf9a2dddcc1a5d94","name":"notification","type":"png"}); // 172 = react-native/Libraries/Image/AssetRegistry
-}, 437, null, "MeGroup/icon/notification.png");
+}, 440, null, "MeGroup/icon/notification.png");
 __d(/* MeGroup/components/default.js */function(global, require, module, exports) {Object.defineProperty(exports,"__esModule",{value:true});var _react=require(12     );var _react2=babelHelpers.interopRequireDefault(_react); // 12 = react
 var _reactNative=require(42            ); // 42 = react-native
 
@@ -94814,7 +94836,7 @@ this.props.navigator.pop();
 
 
 Default;
-}, 438, null, "MeGroup/components/default.js");
+}, 441, null, "MeGroup/components/default.js");
 __d(/* MeGroup/components/Mine/mine.js */function(global, require, module, exports) {Object.defineProperty(exports,"__esModule",{value:true});var _react=require(12     );var _react2=babelHelpers.interopRequireDefault(_react); // 12 = react
 var _reactNative=require(42            );var // 42 = react-native
 
@@ -94833,9 +94855,9 @@ backgroundColor:"#FFC0CB"}});exports.default=
 
 
 Mine;
-}, 439, null, "MeGroup/components/Mine/mine.js");
+}, 442, null, "MeGroup/components/Mine/mine.js");
 __d(/* MeGroup/icon/home.png */function(global, require, module, exports) {module.exports = require(172                                         ).registerAsset({"__packager_asset":true,"httpServerLocation":"/assets/icon","width":24,"height":24,"scales":[1],"hash":"b271500b1c49c034ddb6a0207349be18","name":"home","type":"png"}); // 172 = react-native/Libraries/Image/AssetRegistry
-}, 441, null, "MeGroup/icon/home.png");
+}, 443, null, "MeGroup/icon/home.png");
 ;require(216);
 ;require(0);
 //# sourceMappingURL=index.ios.map

@@ -1,15 +1,36 @@
 import React, { Component } from 'react';
-import { AppRegistry, View, Text, StyleSheet, StatusBar, TouchableOpacity, ScrollView } from "react-native";
+import {View, Text, AsyncStorage } from "react-native";
+
+var STORAGE_KEY = '@SearchHistory:key';
 
 class Search extends Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            history: 'youyou',
+        };
+    }
     render() {
         return (
-            <ScrollView>
+            <View>
                 <Text>
-                    hahahah 
+                    {this.state.history}
                 </Text>
-            </ScrollView>
+            </View>
         );
+    }
+
+  componentDidMount() {
+    this._loadInitialHistory().done();
+  }
+
+    _loadInitialHistory = async () => {
+        try {
+            var value = await AsyncStorage.getItem(STORAGE_KEY);
+            this.setState({history: value});
+        } catch (error) {
+        }
     }
 }
 
