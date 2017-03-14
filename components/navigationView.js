@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import Nearby from './NearBy/nearby';
 import City from './Home/CitySelect/city';
-import Search from './Home/search';
+import SearchView from './Search/searchView';
 
 class Navigation extends Component {
     render() {
@@ -20,7 +20,7 @@ class Navigation extends Component {
                     <Text style={[styles.whiteText]}>西安</Text>
                     <Image source={require('../icon/angle-arrow-down.png')} style={[styles.arrowDown]} />
                 </TouchableOpacity>
-                <TouchableOpacity style={[styles.headerSearch]} onPress={()=>this._search(Search,'Bottom')}>
+                <TouchableOpacity style={[styles.headerSearch]} onPress={()=>this._search(SearchView,'Bottom')}>
                     <View style={[styles.headerSearchDiv]} >
                         <Image source={require('../icon/search.png')} style={[styles.searchIcon]} />
                         <Text style={[styles.placeholder]}>自助餐</Text>
