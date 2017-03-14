@@ -10,18 +10,20 @@ import Default from '../default'
 class Home extends Component {
     render() {
         return (
-            <ScrollView style={styles.container}>
+            <View style={styles.container}>
                 <View style={{ height: 18, backgroundColor: '#21C0AD' }} />
                 <Navigation navigator={this.props.navigator} style={{ paddingTop: 20 }} />
-                <View style={{ height: 200 }}>
-                    <HomeType selectedButton={(typeId) => this.selectedTypeButton(typeId)} />
-                </View>
-                <View style={styles.spaceStyle}></View>
-                <HomeLike />
-                <View style={styles.spaceStyle}></View>
-                <Text style={{ color: '#D6D6D6', textAlign: 'center', paddingTop: 10 }}>－猜你喜欢－</Text>
-                <HomeList />
-            </ScrollView>
+                <ScrollView>
+                    <View style={{ height: 200 }}>
+                        <HomeType selectedButton={(typeId) => this.selectedTypeButton(typeId)} />
+                    </View>
+                    <View style={styles.spaceStyle}></View>
+                    <HomeLike />
+                    <View style={styles.spaceStyle}></View>
+                    <Text style={{ color: '#D6D6D6', textAlign: 'center', paddingTop: 10 }}>－猜你喜欢－</Text>
+                    <HomeList />
+                </ScrollView>
+            </View>
         );
     }
 

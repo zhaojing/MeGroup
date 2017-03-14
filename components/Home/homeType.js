@@ -58,7 +58,7 @@ class HomeType extends Component {
             )
         })
         return (
-            <Swiper >
+            <Swiper height={220} loop={true} index={0} autoplay={true} >
                 {all}
             </Swiper>
         );
