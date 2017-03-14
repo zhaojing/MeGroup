@@ -40,7 +40,7 @@ class HomeType extends Component {
         var all = this.state.all.map(function (arr) {
             var group = arr.map(function (row) {
                 return (
-                    <TouchableOpacity style={styles.item} onPress={() => weakself.butonSelect(row.id)}>
+                    <TouchableOpacity key= {row.id} style={styles.item} onPress={() => weakself.butonSelect(row.id)}>
                         <Image source={row.icon} style={{ width: 50, height: 50 }} />
                         <Text style={{ paddingTop: 5 }}>{row.name}</Text>
                     </TouchableOpacity>

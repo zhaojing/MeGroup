@@ -68,9 +68,14 @@ class HomeList extends Component {
     renderCell(rowData, sectionID, rowID, highlighRow) {
         return (
             <View style={styles.cellStyle}>
-                <Image source={{ uri: rowData.imgurl }} defaultSource = {placeholder} style={{ marginLeft: 10, width: 80, height: 80, backgroundColor: '#FFE1FF' }} />
-                <View style={{ marginLeft: 10, marginRight: 100, marginTop: 10, marginBottom: 10, justifyContent: 'space-between' }}>
-                    <Text style={{ fontSize: 15 }} >{rowData.mname}</Text>
+                <Image source={{ uri: rowData.imgurl }} defaultSource={placeholder} style={{ marginLeft: 10, width: 80, height: 80, backgroundColor: '#FFE1FF' }} />
+                <View style={{ felx: 0.6, marginLeft: 10, marginRight: 100, marginTop: 10, marginBottom: 10, justifyContent: 'space-between',backgroundColor:'blue' }}>
+                    <View style={{ flexDirection: 'row', marginRight:0, backgroundColor:'red'}}>
+                        <Text style={{ fontSize: 15 }} >{rowData.mname}</Text>
+                        <TouchableOpacity style={{ backgroundColor: '#48D1CC', justifyContent: 'flex-end',  marginRight: 10, borderRadius: 5}}>
+                            <Text style = {{color: '#FFFFFF'}}> 收藏 </Text>
+                        </TouchableOpacity>
+                    </View>
                     <Text style={{ color: '#969696', fontSize: 12 }} >{rowData.mtitle}</Text>
                     <Text style={{ color: 'red', fontSize: 15 }} >￥{rowData.price}</Text>
                 </View>
