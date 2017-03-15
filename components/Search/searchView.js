@@ -8,6 +8,7 @@ import {
     TextInput,
     StatusBar,
     TouchableOpacity,
+    ScrollView,
     ListView
 } from "react-native";
 import SearchList from './searchList';
@@ -32,7 +33,7 @@ class SearchView extends Component {
                     <View style={[styles.nav]} >
                         <View style={[styles.search]}>
                             <Image source={require('../../icon/search.png')} style={[styles.searchIcon]} />
-                            <TextInput placeholder={this.state.list[0].name} onChangeText={(text) => this.search(text)} onSubmitEditing={(event) => {this.addHistory(event.nativeEvent.text); this.searchList(event.nativeEvent.text)}} autoFocus={true} returnKeyType='search' style={[styles.searchTextInput]}></TextInput>
+                            <TextInput placeholder={this.state.list[0].name} onChangeText={(text) => this.search(text)} onSubmitEditing={(event) => { this.addHistory(event.nativeEvent.text); this.searchList(event.nativeEvent.text) }} autoFocus={true} returnKeyType='search' style={[styles.searchTextInput]}></TextInput>
                         </View>
                         <TouchableOpacity onPress={() => this.onBack()}>
                             <Text style={[styles.cancel]}>取消
@@ -40,7 +41,27 @@ class SearchView extends Component {
                         </TouchableOpacity>
                     </View>
                 </View>
+                <ScrollView>
+                    <View style={[styles.sessionHeard]}>
+                        <Text style={[styles.sessionHeardText]}>
+                            历史记录
+                    </Text>
+                    </View>
+                    <ListView
+                        enableEmptySections={true}
+                        dataSource={ds.cloneWithRows(this.state.history)}
+                        renderRow={(rowData) => this.historyCell(rowData)}
+                    />
+                    <TouchableOpacity onPress={() => this.clearHistory()}>
+                        <View style={[styles.cellData]}>
+                            <Text>清除收缩记录</Text>
+                        </View>
+                    </TouchableOpacity>
+
+                </ScrollView>
+
                 <ListView
+                    enableEmptySections={true}
                     dataSource={ds.cloneWithRows(this.state.searchResult)}
                     renderRow={(rowData) => this.cell(rowData)}
                 />
@@ -64,7 +85,26 @@ class SearchView extends Component {
             </View>
         );
     }
+
+    historyCell(name) {
+        return (
+            <View style={[styles.cell]}>
+                <TouchableOpacity onPress={() => this.searchList()}>
+                    <View style={[styles.cellData]}>
+                        <View style={[styles.cellIconAndText]}>
+                            <Image source={require('../../icon/search.png')} style={[styles.searchIcon]} />
+                            <Text>{name}</Text>
+                        </View>
+                        <Image source={require('../../icon/angle-arrow-right.png')} style={[styles.searchIcon]} />
+                    </View>
+                    <View style={[styles.line]} />
+                </TouchableOpacity>
+            </View>
+        );
+    }
+
     componentDidMount() {
+        AsyncStorage.clear;
         this._storeInitialSearchList().done;
         this._loadInitialSearchList().done;
         this._loadInitialHistory().done();
@@ -121,9 +161,25 @@ class SearchView extends Component {
         })
     }
 
-    addHistory = async (text) =>  {
+    addHistory = async (text) => {
         try {
-            await AsyncStorage.mergeItem(STOREHISTORY_KEY, text);
+            var historyString = await AsyncStorage.getItem(STOREHISTORY_KEY);
+            var history = JSON.parse(historyString);
+            if (history == null) {
+                history = [];
+                AsyncStorage.setItem(STOREHISTORY_KEY, JSON.stringify(history));
+            } else if (history.indexOf(text) <= -1) {
+                history.push(text);
+                AsyncStorage.setItem(STOREHISTORY_KEY, JSON.stringify(history));
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    clearHistory = async () => {
+        try {
+            await AsyncStorage.removeItem(STOREHISTORY_KEY);
         } catch (error) {
             console.log(error);
         }
@@ -191,6 +247,15 @@ const styles = StyleSheet.create({
         flex: 1,
         height: 0.5,
         backgroundColor: '#EAEAEA'
+    },
+    sessionHeard: {
+        paddingTop: 10,
+        paddingBottom: 5,
+        paddingHorizontal: 10,
+        backgroundColor: '#F4F4F4',
+    },
+    sessionHeardText: {
+        color: '#B1B1B1'
     }
 })
 
