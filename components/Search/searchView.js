@@ -21,7 +21,7 @@ class SearchView extends Component {
         this.state = {
             list: [{}],
             searchResult: [{}],
-            history: 'youyou',
+            history: [],
         };
     }
     render() {
@@ -32,7 +32,7 @@ class SearchView extends Component {
                     <View style={[styles.nav]} >
                         <View style={[styles.search]}>
                             <Image source={require('../../icon/search.png')} style={[styles.searchIcon]} />
-                            <TextInput placeholder={this.state.list[0].name} onChangeText={(text) => this.search(text)} onEndEditing={(text) => this.searchList(text)} autoFocus={true} returnKeyType='search' style={[styles.searchTextInput]}></TextInput>
+                            <TextInput placeholder={this.state.list[0].name} onChangeText={(text) => this.search(text)} onSubmitEditing={(event) => {this.addHistory(event.nativeEvent.text); this.searchList(event.nativeEvent.text)}} autoFocus={true} returnKeyType='search' style={[styles.searchTextInput]}></TextInput>
                         </View>
                         <TouchableOpacity onPress={() => this.onBack()}>
                             <Text style={[styles.cancel]}>取消
@@ -51,7 +51,7 @@ class SearchView extends Component {
     cell(rowData) {
         return (
             <View style={[styles.cell]}>
-                <TouchableOpacity onPress={()=> this.searchList()}>
+                <TouchableOpacity onPress={() => this.searchList()}>
                     <View style={[styles.cellData]}>
                         <View style={[styles.cellIconAndText]}>
                             <Image source={require('../../icon/search.png')} style={[styles.searchIcon]} />
@@ -98,7 +98,7 @@ class SearchView extends Component {
     _loadInitialHistory = async () => {
         try {
             var value = await AsyncStorage.getItem(STOREHISTORY_KEY);
-            this.setState({ history: value });
+            this.setState({ history: JSON.parse(value) });
         } catch (error) {
             console.log(error);
         }
@@ -119,6 +119,14 @@ class SearchView extends Component {
         this.props.navigator.push({
             component: SearchList,
         })
+    }
+
+    addHistory = async (text) =>  {
+        try {
+            await AsyncStorage.mergeItem(STOREHISTORY_KEY, text);
+        } catch (error) {
+            console.log(error);
+        }
     }
 }
 
