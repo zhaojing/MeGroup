@@ -13,6 +13,7 @@ import {
     Alert,
     ActivityIndicator
 } from "react-native";
+import Store from '../Model/store'
 import XmlParser from '../Model/xmlParser';
 const placeholder = require('../../icon/placeHolder.png')
 

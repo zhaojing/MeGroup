@@ -61,8 +61,8 @@ class City extends Component {
             .then((responseData) => {
                 var result = new XmlParser().parseXmlText(responseData);
                 var nameList = result.response.divisions.division;
-                nameList.sort((a, b) => (a.id.text.localeCompare(b.id.text)));
-                let groupNameList = _.groupBy(nameList, x => x.id.text[0]);
+                
+                let groupNameList = this.sortData(nameList);
                 this.setState({
                     dataSource: this.state.dataSource.cloneWithRowsAndSections(groupNameList),
                     loaded: true,
@@ -72,6 +72,11 @@ class City extends Component {
                 console.error(error)
             })
             .done();
+    }
+
+    sortData(nameList) {
+         nameList.sort((a, b) => (a.id.text.localeCompare(b.id.text)));
+        return groupNameList = _.groupBy(nameList, x => x.id.text[0]);
     }
 
     setListView() {
