@@ -15,7 +15,6 @@ import {
 } from "react-native";
 import XmlParser from '../Model/xmlParser';
 const placeholder = require('../../icon/placeHolder.png')
-const 
 
 class HomeList extends Component {
     constructor(props) {

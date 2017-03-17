@@ -12,7 +12,7 @@ import {
   Text,
   View
 } from 'react-native';
-import TabbarView from './components/TabbarView'
+import TabbarView from './app/components/TabbarView'
 
 const defaultRoute = {
   component: TabbarView,
