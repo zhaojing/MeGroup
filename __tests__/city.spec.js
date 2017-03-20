@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import City from '../components/Home/CitySelect/city' 
+import City from '../app/components/Home/CitySelect/city' 
 
 describe('sort Data',()=>{
    test('the first data should Be a', () => {
