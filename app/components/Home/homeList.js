@@ -66,8 +66,7 @@ class HomeList extends Component {
         )
     }
     butonSelect(rowData) {
-        
-        // this.props.selectedButton(inputId);
+        this.props.selectedButton(inputId);
     }
     renderCell(rowData, sectionID, rowID, highlighRow) {
         return (
