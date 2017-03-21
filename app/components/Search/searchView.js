@@ -12,6 +12,7 @@ import {
     ListView
 } from "react-native";
 import SearchList from './searchList';
+import { searchMerchant } from '../../actions/search';
 
 var STOREHISTORY_KEY = '@SearchHistory:key';
 var STORELIST_KEY = '@SearchList:key';
@@ -26,6 +27,7 @@ class SearchView extends Component {
         };
     }
     render() {
+        let self = this;
         return (
             <View style={[styles.container]}>
                 <View>
@@ -185,6 +187,19 @@ class SearchView extends Component {
         }
     }
 }
+
+SearchView.propTypes = {
+  searchMerchant: React.PropTypes.func,
+};
+
+const mapStateToProps = state => ({
+});
+
+const mapDispatchToProps = dispatch => (
+  bindActionCreators({
+    searchMerchant,
+  }, dispatch)
+);
 
 const styles = StyleSheet.create({
     container: {
