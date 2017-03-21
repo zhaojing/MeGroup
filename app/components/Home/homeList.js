@@ -13,7 +13,7 @@ import {
     Alert,
     ActivityIndicator
 } from "react-native";
-import XmlParser from '../Model/xmlParser';
+import Store from '../Model/store'
 const placeholder = require('../../icon/placeHolder.png')
 
 class HomeList extends Component {
@@ -66,8 +66,7 @@ class HomeList extends Component {
         )
     }
     butonSelect(rowData) {
-        
-        // this.props.selectedButton(inputId);
+        this.props.selectedButton(inputId);
     }
     renderCell(rowData, sectionID, rowID, highlighRow) {
         return (
