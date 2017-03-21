@@ -43,7 +43,7 @@ class SearchView extends Component {
                         </TouchableOpacity>
                     </View>
                 </View>
-                <ScrollView>
+                {/*<ScrollView>
                     <View style={[styles.sessionHeard]}>
                         <Text style={[styles.sessionHeardText]}>
                             历史记录
@@ -60,7 +60,7 @@ class SearchView extends Component {
                         </View>
                     </TouchableOpacity>
 
-                </ScrollView>
+                </ScrollView>*/}
 
                 <ListView
                     enableEmptySections={true}
